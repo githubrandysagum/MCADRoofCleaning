@@ -1,0 +1,128 @@
+/****Heror Section****/
+
+.hero-section {
+    background-color: #2C271F;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+    padding:0;
+    z-index: 1;
+  }
+  
+  .hero-support{
+    position: absolute;
+    bottom: -5px;
+  }
+  .hero-support img{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+
+  .hero-image img {
+    position: absolute;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+
+  
+  /* Header and Subtitle */
+  .hero-overlay, .hero-title, .hero-subtitle {
+    opacity: 0; /* Ensure text starts invisible */
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+  /* Keyframe animation */
+@keyframes slideInLeft {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 75%;
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  opacity: 95%;
+  top: 0;
+  left: 0; /* Changed from right to left */
+  width: 100%; /* Keep this width for the box */
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding:10%;
+  padding-top:20%;
+  padding-bottom:20%;
+  z-index: 1;
+  background-color: #2C271F;
+
+  animation: slideInLeft 1s ease-out forwards;
+  animation-delay: 0.5s; /* Delay to stagger the animation */
+}
+  .hero-title {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    animation: slideInLeft 1s ease-out forwards;
+    animation-delay: 1s; /* Delay to stagger the animation */
+    z-index:10;
+  }
+  
+  .hero-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #fcb252;
+    font-weight: bold;
+    animation: slideInLeft 1s ease-out forwards;
+    animation-delay: 1.5s; /* Delay to stagger the animation */
+    z-index:10;
+  }
+  
+/* Medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+   /* CSS styles here */
+   .hero-section {
+    width: 100%;
+    height: 30vh;
+  }
+  
+  .hero-overlay {
+    height: 20vh;
+    width: 50%;
+  }
+   .hero-image img {
+    height: 30%;
+    left:500px;
+  }
+}
+
+
+
+
+/* Medium devices (tablets, 768px to 991px) */
+@media (min-width:450px) and (max-width:768px) {
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .hero-support{
+    display: none;
+  }
+  .hero-section {
+    height: 50vh;
+  }
+
+  .hero-overlay {
+    height: 100%;
+    width: 100%;
+    padding:10% 10%;
+  }
+}
+

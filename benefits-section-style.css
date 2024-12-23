@@ -1,15 +1,17 @@
 /* Style for the full-width image section */
 .full-width-image {
     position: relative;
+    opacity: 110%;
     width: 100%;
     height: 50vh; /* Adjusted height to a more moderate size */
     background-image: url('BenefitSection.jpg'); /* Replace with your image URL */
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;  /* Makes the background image fixed */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; /* Text color */
+    color: rgb(178, 176, 172); /* Text color */
     text-align: center;
     overflow: hidden; /* Ensure content doesn't overflow */
   }
@@ -22,7 +24,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Slightly lighter dark overlay for better text visibility */
+    background-color: rgba(0, 0, 0, 0.5);  /* 0.5 opacity for the dark overlay */
     z-index: 1; /* Ensure overlay stays behind the text */
   }
   
@@ -36,29 +38,23 @@
     margin: 0 auto; /* Center the text horizontally */
   }
   
+  .message-container::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    filter: blur(8px);  /* Apply the blur */
+    z-index: 150;  /* Make sure the overlay is behind the text */
+  }
   /* Font size and styling for the paragraph */
   .message-container p {
-    font-size: 1.5vw; /* Smaller font size, less overwhelming */
+    font-size: 18px; /* Smaller font size, less overwhelming */
     line-height: 1.8; /* Increased line-height for better readability */
     margin: 0 auto;
     font-weight: 400; /* Regular font weight */
     letter-spacing: 0.5px; /* Slight letter-spacing for better clarity */
     max-width: 900px; /* Limit the width of the text for better readability */
-  }
-  
-  /* Ensure text is readable on smaller screens */
-  @media (max-width: 768px) {
-    .message-container p {
-      font-size: 4vw; /* Increase font size for smaller screens, but not too large */
-      padding: 20px; /* Slightly more padding for smaller screens */
-    }
-  }
-  
-  /* Further adjustments for very small screens */
-  @media (max-width: 480px) {
-    .message-container p {
-      font-size: 5vw; /* Even larger text for very small screens */
-      padding: 15px; /* Adjust padding further */
-    }
   }
   

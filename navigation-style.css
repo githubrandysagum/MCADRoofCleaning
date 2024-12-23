@@ -1,0 +1,108 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  color: #A76916;
+  position: relative;
+  z-index: 10;
+}
+
+/* Logo Styles */
+.navbar .logo a {
+  text-decoration: none;
+  color: #A76916;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin-left: auto;
+}
+
+.nav-links li {
+  margin: 0 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color:#A76916;
+  font-size: 1.2rem;
+}
+
+/* Hamburger Wrapper - Creates space around the hamburger icon */
+.hamburger-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;  /* Adds space between the hamburger icon and the border */
+  border-radius: 2px;  /* Optional: rounded corners for the container */
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;  /* Smooth transition for box-shadow */
+}
+
+/* Hamburger Styles */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;  /* Remove background to see border clearly */
+}
+
+/* Hamburger Bars */
+.hamburger .bar {
+  width: 30px;
+  height: 4px;
+  background-color: #A76916;
+  border-radius: 2px;
+}
+
+/* Mobile Styles (for screen sizes 768px and below) */
+@media screen and (max-width: 768px) {
+  .nav-links {
+      position: absolute;
+      top: 80px;
+      right: 0;
+      padding-top: 10vh;
+      font-weight: bold;
+      background-color: #fff;
+      width: 100%;
+      height: 50vh;
+      flex-direction: column;
+      justify-content: top;
+      align-items: center;
+      display: none;
+      z-index: 5;
+  }
+
+  .toggle-menu{
+    display: none;
+  }
+
+  .nav-links li {
+      margin: 1rem 0;
+  }
+
+  /* Show hamburger menu */
+  .hamburger-wrapper {
+      display: flex;
+  }
+
+  /* Hover effect with box-shadow */
+  .hamburger-wrapper:hover {
+      box-shadow: 0 0 0 2px #A76916;  /* Creates space around the hamburger */
+  }
+
+  /* When the checkbox is checked, show the nav links */
+  .toggle-menu:checked + .hamburger-wrapper + .nav-links {
+      display: flex;
+  }
+}
