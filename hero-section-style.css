@@ -48,7 +48,6 @@
 
 .hero-overlay {
   position: absolute;
-  opacity: 95%;
   top: 0;
   left: 0; /* Changed from right to left */
   width: 100%; /* Keep this width for the box */
@@ -59,11 +58,8 @@
   padding:10%;
   padding-top:20%;
   padding-bottom:20%;
-  z-index: 1;
   background-color: #2C271F;
-
-  animation: slideInLeft 1s ease-out forwards;
-  animation-delay: 0.5s; /* Delay to stagger the animation */
+  z-index: 10;
 }
   .hero-title {
     font-size: 32px;
@@ -72,7 +68,6 @@
     margin-bottom: 15px;
     animation: slideInLeft 1s ease-out forwards;
     animation-delay: 1s; /* Delay to stagger the animation */
-    z-index:10;
   }
   
   .hero-subtitle {
@@ -81,8 +76,8 @@
     color: #fcb252;
     font-weight: bold;
     animation: slideInLeft 1s ease-out forwards;
-    animation-delay: 1.5s; /* Delay to stagger the animation */
-    z-index:10;
+    animation-delay: 1s; /* Delay to stagger the animation */
+ 
   }
   
 /* Medium devices (tablets, 768px to 991px) */

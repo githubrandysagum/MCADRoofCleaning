@@ -35,14 +35,34 @@
       height: 30vh;
       background-image: url('AboutSection.jpg'); /* Replace with your image URL */
       background-size: contain;
+      margin-bottom: 5%;
     }
 
   .service-section p{
+    color: #333;
     padding-left:10%;
     padding-right:10%;
     line-height: 1.7;
   }
-  
+  .service-section .readmore{
+    padding-top: 5%;
+    padding-left: 10%;
+  }
+  .service-section .readmore a{
+    border: 5px solid rgb(177, 177, 177);
+    text-decoration: none;
+    color:rgb(159, 157, 157);
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+
+  }
+
+  .service-section .readmore:hover a{
+    color:#D2851F;
+    border-color: #D2851F;
+  }
+
   /* Container to limit the width of the content */
   .service-container {
     position: relative;

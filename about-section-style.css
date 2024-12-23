@@ -21,8 +21,15 @@
     margin: 5%; /* Space between title and body */
     margin-top:10%;
     margin-left:10%;
-    color: #333;
-    line-height: 1.7;
+    margin-bottom: 5px;
+    color: #7e838a;
+  }
+
+  .sub-services{
+    margin-left: 10%;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(183, 179, 179);
   }
   
   /* Body text styling */
@@ -39,7 +46,7 @@
   .cta-button {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #D2851F;
+    background-color: #233F63;
     color: white;
     font-size: 1.1rem;
     text-decoration: none;
