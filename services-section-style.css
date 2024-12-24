@@ -49,11 +49,11 @@
     padding-left: 10%;
   }
   .service-section .readmore a{
-    border: 5px solid rgb(177, 177, 177);
+    border: 5px solid rgb(206, 203, 203);
     text-decoration: none;
-    color:rgb(159, 157, 157);
+    color:rgb(159, 153, 153);
     display: inline-block;
-    padding: 12px 25px;
+    padding: 10px 20px;
     font-size: 1.1rem;
 
   }
