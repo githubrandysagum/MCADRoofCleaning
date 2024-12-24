@@ -14,12 +14,18 @@
 
 .contact-us-container .info-group{
     margin-top: 16px;
+    margin-left:5px;
     margin-bottom: 16px;
     font-size: 16px;
 }
+
+.contact-us-container .info-group label{
+    color : #ffab3d;
+}
 .contact-us-container .info-group span{
-    color:#ffab3d;
+    color:#fff;
     font-weight: 500;
+    margin-left: 16px;
 }
 
 
