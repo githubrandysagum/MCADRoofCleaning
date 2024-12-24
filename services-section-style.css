@@ -12,30 +12,79 @@
   }
 
   .service-section h2{
+    color:grey;
     text-align: center;
     font-size: 24px;
     line-height: 1.7;
   }
 
   .service-section .service-content{
-    margin-bottom: 10%;;
+    margin-bottom: 5%;
+    padding-bottom: 10%;
+    border-bottom: 2px solid rgb(201, 197, 197);
   }
 
   .service-section h3{
+    color: rgb(95, 94, 94);
     text-align: center;
     line-height: 1.7;
     padding-top:24px;
     margin-bottom:12px;
   }
 
+  .service-image-container{
+    display:flex;
+  }
+
+  .service-image .service-images-title{
+    position: relative;
+    background-color: white;
+    padding:5px;
+    top:10px;
+    left: 10px;
+    opacity: 50%;
+  }
+
     /* Image styling (right side) */
     .service-section  .service-image {
       position: relative;
-      width: 100%;
+      width: 50%;
       height: 30vh;
-      background-image: url('AboutSection.jpg'); /* Replace with your image URL */
-      background-size: contain;
       margin-bottom: 5%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .roof-before{
+      border-right: 2px solid #D2851F;
+      background-image: url('roof-before.jpg'); /* Replace with your image URL */
+    }
+    .roof-after{
+      background-image: url('roof-after.jpg'); /* Replace with your image URL */
+    }
+
+    .patio-before{
+      border-right: 2px solid #D2851F;
+      background-image: url('patio-before.jpg'); /* Replace with your image URL */
+    }
+    .patio-after{
+      background-image: url('patio-after.jpg'); /* Replace with your image URL */
+    }
+
+    .render-before{
+      border-right: 2px solid #D2851F;
+      background-image: url('render-before.jpg'); /* Replace with your image URL */
+    }
+    .render-after{
+      background-image: url('render-after.jpg'); /* Replace with your image URL */
+    }
+
+    .gutter-before{
+      border-right: 2px solid #D2851F;
+      background-image: url('Hero-Small-Img.jpg'); /* Replace with your image URL */
+    }
+    .gutter-after{
+      background-image: url('Hero-Small-Img.jpg'); /* Replace with your image URL */
     }
 
   .service-section p{
