@@ -11,5 +11,34 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.container{
+    padding-left: 7.5%;
+    padding-right: 5%;
+}
 
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3 equal-width columns */
+    gap: 20px; /* Optional spacing between grid items */
+    width: 100%; /* Ensure the grid spans the full parent width */
+}
+
+.grid-item {
+    background-color: rgb(36, 56, 74);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+@media (min-width:768px) and (max-width:1500px){
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 3 equal-width columns */
+    }
+}
+
+@media (max-width:768px){
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* 3 equal-width columns */
+    }
+}

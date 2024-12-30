@@ -3,11 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
   background-color: #fff;
   color: #A76916;
   position: relative;
   z-index: 10;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* Logo Styles */
@@ -21,7 +23,6 @@
 .nav-links {
   list-style: none;
   display: flex;
-  margin-left: auto;
 }
 
 .nav-links li {
@@ -36,10 +37,9 @@
 
 .nav-links .cta-nav{
  color: #fff;
-
+ padding:7px 14px;
  background-color: #233F63;
- padding:5px 10px;
- border-radius: 5px;
+ border-radius: 2px;
 }
 
 /* Hamburger Wrapper - Creates space around the hamburger icon */
@@ -77,15 +77,18 @@
 }
 
 
-
-
+@media (min-width: 1200px)  {
+  .navbar .logo img {
+    width: 200px;
+    height: auto;
+  }
+}
 /* Mobile Styles (for screen sizes 768px and below) */
 @media screen and (max-width: 750px) {
   .nav-links {
       position: absolute;
       top: 80px;
       right: 0;
-      padding-top: 10vh;
       font-weight: bold;
       background-color: #fff;
       width: 100%;
@@ -95,16 +98,18 @@
       align-items: center;
       display: none;
       z-index: 5;
+      padding: 10%;
+  }
+
+  .nav-links li{
+    padding-top: 5%;
   }
 
   .toggle-menu{
     display: none;
   }
 
-  .nav-links li {
-      margin: .7rem 0;
-  }
-
+ 
   /* Show hamburger menu */
   .hamburger-wrapper {
       display: flex;
@@ -133,6 +138,10 @@
 
   .nav-links a{
     color: gray;
+    font-size: 1.2rem;
     font-weight: 500;
+    padding: 10px;
   }
+
+  
 }

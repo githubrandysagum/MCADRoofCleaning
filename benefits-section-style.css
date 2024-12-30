@@ -32,9 +32,7 @@
   .message-container {
     position: relative; /* Ensures the text stays above the overlay */
     z-index: 2; /* Ensures the text appears above the overlay */
-    max-width: 1200px; /* Restrict content width to a maximum of 1200px */
     width: 100%; /* Make it take up 100% of available space, but no more than max-width */
-    padding: 15px; /* Adjusted padding for better spacing */
     margin: 0 auto; /* Center the text horizontally */
   }
   
@@ -52,9 +50,44 @@
   .message-container p {
     font-size: 18px; /* Smaller font size, less overwhelming */
     line-height: 1.8; /* Increased line-height for better readability */
-    margin: 0 auto;
     font-weight: 400; /* Regular font weight */
     letter-spacing: 0.5px; /* Slight letter-spacing for better clarity */
-    max-width: 900px; /* Limit the width of the text for better readability */
   }
   
+
+   /* wide screen */
+   @media (min-width: 1200px) {
+
+    .message-container p {
+          font-size: 28px; /* Adjusted for readability */
+        }
+  }
+
+   /* wide screen */
+   @media (max-width: 1200px) {
+      
+    
+
+      .message-container p {
+          font-size: 20px; /* Adjusted for readability */
+          line-height: 32px;
+        }
+  }
+
+   /* wide screen */
+   @media (max-width: 768px) {
+     
+     .message-container p {
+          font-size: 20px; /* Adjusted for readability */
+          line-height: 32px;
+        }
+  }
+
+   /* wide screen */
+   @media (max-width: 480px) {
+     
+      .message-container p {
+          font-size: 16px; /* Adjusted for readability */
+          line-height: 32px;
+        }
+  }

@@ -2,21 +2,17 @@
 
 .hero-section {
    /** background-color: #2C271F;**/
-    height: 50vh;
-    overflow: hidden;
-    position: relative;
-    padding:0;
     z-index: 1;
+    background-color: #2C271F;
+    position:relative;
   }
   
   .hero-image img {
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
     z-index: 1;
   }
  .hero-image{
-  display:absolute;
+  display:relative;
  }
 
   /* Keyframe animation */
@@ -48,27 +44,24 @@
   opacity: 0; /* Ensure text starts invisible */
   animation: slideInOverlay 0.5s ease-out forwards;
 }
-
+.hero-content{
+  padding:0;
+}
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0; /* Changed from right to left */
   width: 100%; /* Keep this width for the box */
-  height: 100%;
-  align-items: center;
-  justify-content: center;
   color: #fff;
-  padding:10%;
-  padding-top:20%;
-  padding-bottom:20%;
   background-color: #2C271F;
   z-index: 10;
   animation: slideInOverlay 0.5s ease-out forwards;
-    animation-delay: 0.5s; /* Delay to stagger the animation */
+  animation-delay: 0.5s; /* Delay to stagger the animation */
  
 }
   .hero-title {
-    font-size: 32px;
+      font-size: calc(16px + 2vw);
+    padding:0;
     font-weight: bold;
     line-height: 1.2;
     margin-bottom: 15px;
@@ -85,49 +78,79 @@
     animation-delay: 1.5s; /* Delay to stagger the animation */
  
   }
+
+
+  /* For very large screens (e.g., 1600px and beyond) */
+
+  @media (min-width: 1200px){
+    .hero-section {
+      display: block;
+    }
+
+   .hero-overlay {
+     width: 50%;
+     display: flex;
+     align-items: center;
+      height: 50vw;
+      max-height: 500px;
+      min-height: 350px;
+   }
+
+    .hero-image img {
+     width: 100%;
+     height: auto;
   
-/* Medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-   /* CSS styles here */
-   .hero-section {
-    width: 100%;
-    height: 30vh;
-  }
-  
-  .hero-overlay {
-    height: 20vh;
-    width: 50%;
-  }
-   .hero-image img {
-    height: 30%;
-    left:500px;
-  }
-}
-
-
-
-
-/* Medium devices (tablets, 768px to 991px) */
-@media (min-width:450px) and (max-width:768px) {
-
-
-  
-
-  .hero-title {
-    font-size: 48px;
+   }
   }
 
-  .hero-support{
-    display: none;
-  }
+
+
+@media (min-width: 768px) and (max-width: 1200px){
   .hero-section {
-    height: 50vh;
+    display: block;
   }
 
   .hero-overlay {
-    height: 100%;
-    width: 100%;
-    padding:10% 10%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+     height: 40vw;
+     max-height: 400px;
+     min-height: 300px;
   }
+ .hero-subtitle {
+  font-size: 16px;
+ }
+  .hero-image img {
+   width: 100%;
+   height: auto;
+
+ }
 }
+
+@media  (max-width: 767px){
+  .hero-section {
+    display: block;
+  }
+
+  .hero-overlay {
+    width: 100%;
+    display: flex;
+    align-items: center;
+     height: 80vw;
+     max-height: 400px;
+     min-height: 300px;
+  }
+
+  .hero-image img {
+    position: relative;
+    width: 100%;
+   height: auto;
+   background-position: center;
+   background-size: cover;
+
+ }
+}
+
+
 

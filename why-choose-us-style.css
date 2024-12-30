@@ -15,17 +15,11 @@
   .why-us-container {
     position: relative;
     z-index: 2; /* Ensures the text stays above the background */
-    max-width: 1200px; /* Restrict content width to a maximum of 1200px */
-    width: 100%;
-    padding: 10px; /* Increased padding to make the container more spacious */
-    margin: 0 auto; /* Center the content horizontally */
   }
   
   /* Styling for the heading */
   .why-us-section h2 {
     font-size: 32px; /* Slightly larger font size for better visibility */
-    margin-top: 24px; /* Increased space between title and body */
-    margin-bottom: 32px; /* Increased space between title and body */
     font-weight: bold; /* Adjusted to a balanced weight */
     letter-spacing: 1px; /* Spacing for better clarity */
     color: #233F63; /* Darker color for the header */
@@ -36,46 +30,37 @@
   .why-us-section p {
     font-size: 24px; /* Adjusted for readability */
     line-height: 40px; /* Increased line-height for better readability */
-    margin: 0 auto;
     font-weight: 400; /* Regular weight for body text */
     letter-spacing: 0.5px; /* Slight letter-spacing for better clarity */
-    max-width: 1200px; /* Limit the width of the text for better readability */
   }
   
     /* wide screen */
-    @media (max-width: 1200px) {
+    @media (min-width: 1200px) {
 
-        .why-us-container {
-            padding: 48px; /* Increased padding to make the container more spacious */
-          }
-        .why-us-section {
-            height: 50vh;
-        }
+     
+      .why-us-section {
+          height: 55vh;
+      }
 
-        .why-us-section h2 {
-            font-size: 24px; /* Slightly larger font size for better visibility */
-            margin-top: 32px; /* Increased space between title and body */
-            margin-bottom: 24px; /* Increased space between title and body */
-        }
+      .why-us-section h2 {
+            font-size: 36px; /* Slightly larger font size for better visibility */
+            margin-bottom: 32px;
+      }
 
         .why-us-section p {
-            font-size: 20px; /* Adjusted for readability */
+            font-size: 28px; /* Adjusted for readability */
           }
     }
 
      /* wide screen */
-     @media (max-width: 1024px) {
-        .why-us-container {
-            padding: 40px; /* Increased padding to make the container more spacious */
-        }
+     @media (max-width: 1200px) {
+        
         .why-us-section {
-            height: 40vh;
+            height: 30vh;
         }
 
         .why-us-section h2 {
             font-size: 28px; /* Slightly larger font size for better visibility */
-            margin-top: 32px; /* Increased space between title and body */
-            margin-bottom: 24px; /* Increased space between title and body */
         }
 
         .why-us-section p {
@@ -86,18 +71,15 @@
 
      /* wide screen */
      @media (max-width: 768px) {
-        .why-us-container {
-            padding: 40px; /* Increased padding to make the container more spacious */
-        }
+       
         .why-us-section {
-            height: 50vh;
+            height: 30vh;
         }
 
         .why-us-section h2 {
             font-size: 24px; /* Slightly larger font size for better visibility */
-            margin-top: 32px; /* Increased space between title and body */
-            margin-bottom: 24px; /* Increased space between title and body */
-        }
+            margin-bottom: 24px;
+       }
 
         .why-us-section p {
             font-size: 20px; /* Adjusted for readability */
@@ -107,17 +89,13 @@
 
      /* wide screen */
      @media (max-width: 480px) {
-        .why-us-container {
-            padding: 40px; /* Increased padding to make the container more spacious */
-        }
-        .why-us-section {
-            height: auto;
+       
+          .why-us-section {
+            height: 40vh;
         }
 
         .why-us-section h2 {
             font-size: 24px; /* Slightly larger font size for better visibility */
-            margin-top: 32px; /* Increased space between title and body */
-            margin-bottom: 16px; /* Increased space between title and body */
         }
 
         .why-us-section p {

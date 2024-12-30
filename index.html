@@ -18,15 +18,15 @@
 <body>
     <header>
         <div class="cta-banner">
-            <div class="cta-content">
+            <div class="cta-content container">
                 <div class="cta-left">Location: New York</div>
                 <div class="cta-right">
                     <a href="tel:+1234567890">Call Us: +1 234 567 890</a>
                 </div>
             </div>
         </div>
-        <div class="navbar">
-          <div class="logo"><img src="Logo.jpg" alt="Logo"></div>
+        <div class="navbar container">
+          <div class="logo"><img src="Logo.png" alt="Logo"></div>
           <input type="checkbox" class="toggle-menu" id="menu-toggle">
           <label for="menu-toggle" class="hamburger-wrapper">
               <div class="hamburger">
@@ -48,46 +48,45 @@
       
     </header>
     <!-- Hero Section -->
-    <section class="hero-section">
-    
+    <section class="hero-section ">
+        <div class="hero-overlay container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Clean Roof <br> Clear Benefits!</h1>
+                    <p class="hero-subtitle">Safe, Efficient with Outstanding Results!</p>
+                </div>
+        </div>
        
          <!-- Hero Image -->
          <div class="hero-image">
           <picture>
             <!-- For small screens (mobile), use this image -->
+            <source media="(min-width:768px)" srcset="Hero-large.jpg">
             <img src="HeroBeforeImg.jpg" alt="Hero Image">
           </picture>
         </div>
         <!-- Overlay Box with Titles and Subtitles -->
-        <div class="hero-overlay">
-          <div class="hero-overlay-container">
-              <div class="hero-content">
-                  <h1 class="hero-title">Clean Roof <br> Clear Benefits!</h1>
-                  <p class="hero-subtitle">Safe, Efficient <br> with Outstanding Results!</p>
-              </div>
-          </div>
-          
-       </div>
+       
     </section>
     <!-- About Section -->
-    <section class="responsive-section">
-        <div class="container">
-          <div class="text-content">
+    <section class="about-section container">
+          <div class="text-content half-width-content">
             <h1>MCAD Roof Cleaning</h1>
             <div class="sub-services"><span>Roof | Patio | Gutter | Render | Biociding</span></div>
             <p>We are fully qualified in roof cleaning and biociding.  We take our health and safety seriously, providing all our own access equipment (we do not hire any equipment as we can not guarantee the safety of it).</p>
-            <div class="image-content">
-            </div>
+          
              <p>We will assess the roof in and out and then decide the best course of cleaning for your requirements and then give you a quote.</p>
             <p>As the process will cause some mess, we will clean out the gutters and in certain cases we would wash down soffits and barge boards.</p>
             <a href="tel:+1234567890" class="cta-button">Book now</a>
           </div>
+          <div class="half-width-content">
+            <div class="image-content ">
+            </div>
+          </div>
          
-        </div>
       </section>
   <!-- Why Us Section -->
   <section class="why-us-section">
-    <div class="why-us-container">
+    <div class="why-us-container container">
       <h2>Why Choose Us?</h2>
       <p>
         We offer the best roof moss cleaning services, using eco-friendly techniques that ensure your roof, gutters, and downpipes remain in top condition. Our expert team delivers quality and reliability with every job.
@@ -98,8 +97,8 @@
  <section class="service-section">
   <div class="service-container">
     <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-content">
+    <div class="grid-container container">
+      <div class="grid-item">
         <h3>Roof Cleaning</h2>
         <div class="service-image-container">
           <div class="service-image roof-before">
@@ -114,7 +113,7 @@
           <a href="tel:+1234567890">Read More</a>
         </div>
       </div>
-      <div class="service-content">
+      <div class="grid-item">
         <h3>Patio Cleaning</h2>
           <div class="service-image-container">
             <div class="service-image patio-before">
@@ -129,7 +128,7 @@
           <a href="tel:+1234567890">Read More</a>
         </div>
       </div>
-      <div class="service-content">
+      <div class="grid-item">
         <h3>Render Cleaning</h2>
           <div class="service-image-container">
             <div class="service-image render-before">
@@ -144,7 +143,7 @@
             <a href="tel:+1234567890">Read More</a>
           </div>
       </div>
-      <div class="service-content">
+      <div class="grid-item">
         <h3>Gutter Cleaning & Repairs</h2>
           <div class="service-image-container">
             <div class="service-image gutter-before">
@@ -167,7 +166,7 @@
 </section>
    <!-- Benefits Section -->
     <section class="full-width-image">
-      <div class="message-container">
+      <div class="message-container container">
         <p>
           By cleaning the moss off your roof, you are protecting not just your roof
           but also your downpipes, soakaways, and gutters, which could become
@@ -212,10 +211,10 @@
       </form>
     </div>
   </section>
-  <footer style="padding: 20px; background: #717477; color: #ffffff; text-align: center;">
+  <footer style="padding: 20px; background: #394c5e; color: #ffffff; text-align: center;">
     <!-- Logo -->
     <div style="margin-bottom: 15px;">
-      <img src="Logo.jpg" alt="MCAD Logo" style="max-width: 120px;">
+      <img src="Logo.png" alt="MCAD Logo" style="max-width: 120px;">
     </div>
   
     <!-- Quick Links -->
