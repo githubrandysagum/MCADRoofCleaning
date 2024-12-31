@@ -41,7 +41,15 @@ h1{
    
 }
 h2 {
-    font-size: 24px; /* Default for large screens */
+    font-size: clamp(1.5rem,2vw,3rem); 
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    color: #233F63;
+}
+
+h3 {
+    font-size: clamp(1rem,2vw,1.2rem); 
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 16px;

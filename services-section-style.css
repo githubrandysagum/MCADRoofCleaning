@@ -36,6 +36,11 @@
     margin-bottom:12px;
   }
 
+  .service-section p{
+    font-size: clamp(12px, 1.5vw, 16px); /* Scales from 14px to 18px */
+   
+  }
+
   .service-image-container{
     display:flex;
   }
