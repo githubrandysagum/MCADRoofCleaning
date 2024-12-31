@@ -1,32 +1,25 @@
 /* Container for the section */
 .about-section {
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 10%;
+    margin-bottom: 10%s;
     width: 100%;
     background-color: #f4f4f4;
     position:relative;
-    display: flex;
-    flex: 1 1 auto;
+    height: 50vw;
+    min-height: 500px;
   }
   
-  /* Container that keeps the content centered and within 1200px */
-  .about-section {
-    width: 100%;
-  }
-  
+ 
   /* Style for text content (left side) */
   .text-content {
     text-align: left;
+    height: 100%; /* Ensure the container has a height */
+    width: 50vw;
+    padding-top: 20vh;
     padding-right: 10%;
   }
   
   /* Title styling */
-  .text-content h1 {
-    font-size: 24px;
-    margin-bottom: 5px;
-    color: #7e838a;
-  }
-
   .sub-services{
     font-size: 16px;
     font-weight: bold;
@@ -35,10 +28,7 @@
   
   /* Body text styling */
   .text-content p {
-    font-size: 18px;
     color: #666;
-    line-height: 1.7; /* Increase line height for better readability */
-    font-weight: 400;
   }
   
   /* Call to action button styling */
@@ -59,62 +49,64 @@
   }
   
   /* Image styling (right side) */
-  .image-content {
-    width: 100%;
-    height: 80vh;
-    background-image: url('AboutSection.jpg'); /* Replace with your image URL */
+  .image-content{
+    padding-top: 10vh;
   }
   
- 
-  
-  .image-content img::after {
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  .image-content img{
+    width: 70%;
+    height: auto;
+    padding:0
   }
   
   .about-grid-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* 3 equal-width columns */
-      width: 100%; /* Ensure the grid spans the full parent width */
   }
 
   .about-grid-item {
       text-align: left;
       color: white;
+      width: 100%;
   }
 
   @media (min-width: 1200px){
-   
-    .image-content {
-      position: relative;
-      width: 100%;
-      height: 80vh;
-    }
-
-    .text-content{
-      padding:0;
-      padding-right:10%;
-      margin:0;
-    }
     .text-content h1 {
       margin-top:0;
       font-size: 2.5rem;
     }
+  }
 
-    .text-content p {
-      font-size: 1.6rem;
-      margin-top:16px;
-      margin-bottom:16px;
+  @media (max-width: 1200px){
+    .text-content {
+      padding-top: 10vh;
     }
   }
 
-  @media (max-width:1200px){
+  @media (max-width: 768px){
     .about-grid-container {
+      display: grid;
       grid-template-columns: repeat(1, 1fr); /* 3 equal-width columns */
+  }
+  .text-content{
+    padding-right: 0;
+    padding-top: 10vw;
+  }
+  .about-section {
+    height: auto;
+    max-height: 1000px;
+  }
+  .image-content{
+   padding: 0;
+  }
+    .image-content img{
+      width: 100%;
+      height: auto;
+      padding:0;
+
+
     }
   }
+
+  
+ 

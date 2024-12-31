@@ -18,6 +18,7 @@ body {
 
 
 .grid-container {
+    padding-top: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 3 equal-width columns */
     gap: 20px; /* Optional spacing between grid items */
@@ -25,22 +26,51 @@ body {
 }
 
 .grid-item {
-    border: 5px solid rgb(237, 238, 238);
-    border-radius: 5px;
+    
+    background-color: #f1f3f5;
+    border-radius: 2px;
     padding-bottom: 20px;
     text-align: center;
     color:rgb(36, 56, 74);
+    padding:20px;
 }
 
 
 h1{
-    font-size:clamp(2.5rem,4vw,5rem);
+    font-size:clamp(2.5rem,4vw,5rem); 
+   
 }
+h2 {
+    font-size: 24px; /* Default for large screens */
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 16px;
+    color: #233F63;
+}
+
+p {
+    font-size: clamp(14px, 1.5vw, 18px); /* Scales from 14px to 18px */
+    line-height: 1.6;
+    margin-bottom: 1em;
+    letter-spacing: 0.2px; /* Optional: Slight spacing for readability */
+    color: #333; /* Ensure good contrast */
+    max-width: 700px;
+}
+
+@media (min-width:1024px){
+    h2{
+        font-size: clamp(24px, 6vw, 30px);
+    }
+    
+}
+
+
 @media (min-width:768px) and (max-width:1500px){
     .grid-container {
         grid-template-columns: repeat(2, 1fr); /* 3 equal-width columns */
     }
 }
+
 
 @media (max-width:768px){
     .grid-container {
@@ -48,5 +78,15 @@ h1{
         padding-left:0;
         padding-right:0;
         grid-template-columns: repeat(1, 1fr); /* 3 equal-width columns */
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
     }
 }

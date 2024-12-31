@@ -2,13 +2,14 @@
 .why-us-section {
     position: relative;
     width: 100%;
-    background: #DC9942; /* Gradient from yellow to dark yellow/gold */
+    background:rgb(231, 229, 229); /* Gradient from yellow to dark yellow/gold */
     display: flex;
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
-    color: white; /* Text color */
+    color: darkgray; /* Text color */
     text-align: center;
     overflow: hidden; /* Ensure content doesn't overflow */
+    min-height: 200px;
   }
   
   /* Container to limit the width of the content */
@@ -19,88 +20,47 @@
   
   /* Styling for the heading */
   .why-us-section h2 {
-    font-size: 32px; /* Slightly larger font size for better visibility */
-    font-weight: bold; /* Adjusted to a balanced weight */
-    letter-spacing: 1px; /* Spacing for better clarity */
     color: #233F63; /* Darker color for the header */
     text-align: center; /* Ensure the title is centered horizontally */
   }
   
   /* Body message styling */
   .why-us-section p {
-    font-size: 24px; /* Adjusted for readability */
-    line-height: 40px; /* Increased line-height for better readability */
-    font-weight: 400; /* Regular weight for body text */
-    letter-spacing: 0.5px; /* Slight letter-spacing for better clarity */
+    max-width: 700px;
   }
   
     /* wide screen */
     @media (min-width: 1200px) {
 
-     
       .why-us-section {
-          height: 55vh;
+          height: 40vh;
       }
-
-      .why-us-section h2 {
-            font-size: 36px; /* Slightly larger font size for better visibility */
-            margin-bottom: 32px;
-      }
-
-        .why-us-section p {
-            font-size: 28px; /* Adjusted for readability */
-          }
     }
 
      /* wide screen */
      @media (max-width: 1200px) {
         
         .why-us-section {
-            height: 30vh;
+            height: 35vh;
         }
 
-        .why-us-section h2 {
-            font-size: 28px; /* Slightly larger font size for better visibility */
-        }
-
-        .why-us-section p {
-            font-size: 20px; /* Adjusted for readability */
-            line-height: 32px;
-          }
     }
 
      /* wide screen */
      @media (max-width: 768px) {
        
         .why-us-section {
-            height: 30vh;
+            height: 25vh;
         }
 
-        .why-us-section h2 {
-            font-size: 24px; /* Slightly larger font size for better visibility */
-            margin-bottom: 24px;
-       }
-
-        .why-us-section p {
-            font-size: 20px; /* Adjusted for readability */
-            line-height: 32px;
-          }
     }
 
      /* wide screen */
      @media (max-width: 480px) {
        
           .why-us-section {
-            height: 40vh;
+            height: 30vh;
         }
 
-        .why-us-section h2 {
-            font-size: 24px; /* Slightly larger font size for better visibility */
-        }
-
-        .why-us-section p {
-            font-size: 16px; /* Adjusted for readability */
-            line-height: 32px;
-          }
     }
 

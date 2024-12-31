@@ -62,7 +62,6 @@
   .hero-title {
       font-size: calc(16px + 2vw);
     padding:0;
-    font-weight: bold;
     line-height: 1.2;
     margin-bottom: 15px;
     animation: slideInLeft 1s ease-out forwards;
@@ -73,7 +72,6 @@
     font-size: 14px;
     line-height: 1.5;
     color: #fcb252;
-    font-weight: bold;
     animation: slideInLeft 1.5s ease-out forwards;
     animation-delay: 1.5s; /* Delay to stagger the animation */
  

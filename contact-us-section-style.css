@@ -10,6 +10,7 @@
 .contact-us-container h2{
     font-weight: 500;
     margin-bottom: 20px;
+    color: white;
 }
 
 .contact-us-container .info-group{
@@ -36,10 +37,10 @@
 
 
 .get-intouch-container {
+    display: none;
     background-color: rgb(240, 240, 240);
     color:#233F63;
     margin-top:16px;
-    display: block;
     border: none;
     border-radius: 2px;
     padding:10%;

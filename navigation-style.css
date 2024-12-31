@@ -32,7 +32,12 @@
 .nav-links a {
   text-decoration: none;
   color:#A76916;
-  font-size: 1.2rem;
+  font-size: clamp(14px, 1.5vw, 18px);
+  letter-spacing: 0.2px;
+    margin-bottom: 1em;
+    line-height: 1.6;
+    font-weight: 600;
+    padding: 10px;
 }
 
 .nav-links .cta-nav{
@@ -135,13 +140,4 @@
     width: 120px;
     height: auto;
   }
-
-  .nav-links a{
-    color: gray;
-    font-size: 1.2rem;
-    font-weight: 500;
-    padding: 10px;
-  }
-
-  
 }
