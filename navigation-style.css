@@ -6,10 +6,11 @@
   background-color: #fff;
   color: #A76916;
   position: relative;
-  z-index: 10;
-
+  z-index: 20;
+  opacity: 75%;
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: white;
 }
 
 /* Logo Styles */
