@@ -4,7 +4,7 @@
    /** background-color: #2C271F;**/
     z-index: 1;
     position:relative;
-    top:-15vh;
+    top:0vh;
     height: 50vh;
   }
   
@@ -18,8 +18,21 @@
   display:relative;
  }
 
+ .hero-before-image{
+  position:absolute;
+  top:-95%;
+  z-index:30;
   
+ }
 
+ .hero-before-image img{
+  border-radius:50%;
+  border:5px solid #734303;
+  width: 70%;
+  height: 70%;
+  z-index:50;
+ 
+ }
 
 .hero-content{
   padding:0;
@@ -35,7 +48,7 @@
   z-index: 10;
   animation: slideInOverlay 0.5s ease-out forwards;
   animation-delay: 0.5s; /* Delay to stagger the animation */
-  padding-left:20%;
+  padding-left:15%;
   padding-right:2%;
   padding-top: 10%;
   padding-bottom: 10%;
@@ -74,16 +87,16 @@
   .sticky-container{
     position:relative;
     top:-40vw;
-    height: 50vw;
+    height: 45vw;
     width: 50%;
-    background-color: transparent;
-
+    z-index:0;
   }
+
 
   /* For very large screens (e.g., 1600px and beyond) */
   @media (orientation: landscape) and (min-width: 1200px){
     .hero-section {
-      height: 50vw;
+      height: 60vw;
     }
   }
 
@@ -99,18 +112,56 @@
 
 @media (orientation: portrait) and (max-width: 1024px){
   .hero-section {
-    height: 35vh;
+    height: 700px;
     top:0vh;
   }
-  
+
+  .hero-before-image{
+    position:absolute;
+    top:-170px;
+    z-index:30;
+    
+   }
+
 }
+
+@media (orientation: landscape) and  (max-width:1024px){
+  .hero-section {
+    height: 700px;
+    top:0;
+  }
+
+  .hero-before-image{
+    position:absolute;
+    top:-150px;
+    z-index:30;
+    
+   }
+}
+
+@media (orientation: portrait) and (max-width: 820px){
+  .hero-section {
+    height: 600px;
+  }
+
+  .hero-before-image{
+    position:absolute;
+    top:-170px;
+    z-index:30;
+    
+   }
+
+}
+
+
 
 @media (orientation: portrait) and  (max-width: 480px){
   .hero-section {
-    height: 60vh;
-    top:-15vh;
+    height: 600px;
+    top:0;
   }
 }
+
 
 
 

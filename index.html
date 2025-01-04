@@ -49,19 +49,26 @@
     </header>
     <!-- Hero Section -->
     <section class="hero-section">
-        
-       
          <!-- Hero Image -->
+        
          <div class="hero-image">
           <picture>
             <!-- For small screens (mobile), use this image -->
             <source media="(max-width:485px)" srcset="Hero-small.jpg">
+            <source media="(max-width:1024px)" srcset="HeroImg.jpg">
             <img src="Hero-large.jpg" alt="Hero Image">
           </picture>
         </div>
+       
         <!-- Overlay Box with Titles and Subtitles -->
-        <div class="sticky-container container">
+        <div class="sticky-container">
           <div class="hero-overlay">
+            <div class="hero-before-image">
+              <picture>
+                <!-- For small screens (mobile), use this image -->
+                <img src="HeroBeforeImg.jpg" alt="Hero Image">
+              </picture>
+            </div>
             <div class="hero-content">
                 <h1>Clean Roof <br> Clear Benefits!</h1>
                 <p class="hero-subtitle">Safe, Efficient with Outstanding Results!</p>
@@ -82,7 +89,7 @@
             <a href="tel:+1234567890" class="cta-button">Book now</a>
           </div>
           <div class="about-grid-item">
-            <div class="image-content ">
+            <div class="image-content">
               <img src="AboutSection.jpg">
             </div>
           </div>

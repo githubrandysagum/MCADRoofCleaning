@@ -2,7 +2,8 @@
 .service-section {
     position: relative;
     width: 100%;
-    background: #3b424e; /* Gradient from yellow to dark yellow/gold */
+    backface-visibility: 75%;
+    background: #6d5e3d; /* Gradient from yellow to dark yellow/gold */
     display: flex;
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */

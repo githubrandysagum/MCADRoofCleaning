@@ -50,7 +50,9 @@
   
   /* Image styling (right side) */
   .image-content{
+    display: flex;
     padding-top: 10vh;
+    justify-content: center;
   }
   
   .image-content img{

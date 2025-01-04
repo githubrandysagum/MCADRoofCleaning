@@ -1,16 +1,17 @@
 /* Navbar Styles */
 .navbar {
   display: flex;
+  
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
   color: #A76916;
-  position: relative;
-  z-index: 20;
-  opacity: 75%;
+  position: absolute;
+  z-index: 15;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
 }
 
 /* Logo Styles */
@@ -24,6 +25,7 @@
 .nav-links {
   list-style: none;
   display: flex;
+  z-index:40;
 }
 
 .nav-links li {
