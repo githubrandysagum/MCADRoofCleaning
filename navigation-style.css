@@ -1,16 +1,15 @@
 /* Navbar Styles */
 .navbar {
   display: flex;
-  
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: #e3941e;
   color: #A76916;
   position: absolute;
   z-index: 15;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(221, 217, 209, 0.2);
   width: 100%;
 }
 
@@ -32,15 +31,20 @@
   margin: 0 1rem;
 }
 
+
 .nav-links a {
   text-decoration: none;
-  color:#A76916;
+  color:rgb(69, 44, 5);
   font-size: clamp(14px, 1.5vw, 18px);
   letter-spacing: 0.2px;
     margin-bottom: 1em;
     line-height: 1.6;
     font-weight: 600;
     padding: 10px;
+}
+
+.nav-links a:hover {
+ color: white;
 }
 
 .nav-links .cta-nav{
