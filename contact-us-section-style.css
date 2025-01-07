@@ -1,10 +1,15 @@
 .contact-us-section{
     background-color: #233F63;
     color : #fff;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 equal-width columns */
+    gap: 0px; /* Optional spacing between grid items */
+    width: 100%;
 }
 
 .contact-us-container{
-    padding: 10%;
+    width: 100%;
+    padding: 20%;
 }
 
 .contact-us-container h2{
@@ -15,7 +20,6 @@
 
 .contact-us-container .info-group{
     margin-top: 16px;
-    margin-left:5px;
     margin-bottom: 16px;
     font-size: 16px;
 }
@@ -31,59 +35,23 @@
 
 
 
-.get-intouch-container h2{
-    margin-bottom: 20px;
-}
-
-
-.get-intouch-container {
-    display: none;
-    background-color: rgb(240, 240, 240);
-    color:#233F63;
-    margin-top:16px;
-    border: none;
-    border-radius: 2px;
-    padding:10%;
+.map-container {
     width: 100%;
  }
 
- .get-intouch-container .input-group{
-    margin-bottom:24px;
- }
-
- .get-intouch-container label{
-   font-size: 16px;
-   font-weight: 500;
- }
- .get-intouch-container input{
-    margin-top:16px;
-    display: block;
-    border: none;
-    border-radius: 2px;
-    padding:12px 12px;
+ .map-container iframe{
     width: 100%;
+    height: 100%;
  }
 
- .get-intouch-container textarea{
-    margin-top:16px;
-    display: block;
-    border: none;
-    border-radius: 2px;
-    padding:12px 12px;
-    width: 100%;
-    height: 8rem;
+ @media (max-width:480px) {
+    .contact-us-section{
+        grid-template-columns: repeat(1, 1fr); /* 3 equal-width columns */
+    }
+
+    .contact-us-container{
+        padding: 10%;
+    }
  }
 
- .get-intouch-container .btn-submit{
-    background-color: #233F63; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
- }
 
