@@ -9,7 +9,7 @@
   z-index: 15;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: rgba(221, 217, 209, 0.2);
+  background-color:white;
   width: 100%;
 }
 
@@ -34,7 +34,7 @@
 
 .nav-links a {
   text-decoration: none;
-  color:rgb(69, 44, 5);
+  color:rgb(45, 39, 39);
   font-size: clamp(14px, 1.5vw, 18px);
   letter-spacing: 0.2px;
     margin-bottom: 1em;
@@ -43,8 +43,9 @@
     padding: 10px;
 }
 
-.nav-links a:hover {
+.nav-links a.active {
  color: white;
+ background-color: #A76916;
 }
 
 .nav-links .cta-nav{

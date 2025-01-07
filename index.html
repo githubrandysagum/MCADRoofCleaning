@@ -14,14 +14,17 @@
     <link rel="stylesheet" href="why-choose-us-style.css">
     <link rel="stylesheet" href="services-section-style.css">
     <link rel="stylesheet" href="contact-us-section-style.css">
+    <link rel="stylesheet" href="certificates-section.css">
 </head>
 <body>
     <header>
         <div class="cta-banner">
             <div class="cta-content container">
-                <div class="cta-left"><i class="material-icons">place</i> New York</div>
+                <div class="cta-left"><i class="material-icons">place</i>87 Bandford Road
+                  Reading
+                  RG2 8RR<br> London, England, UK</div>
                 <div class="cta-right">
-                    <a href="tel:+1234567890"><i class="material-icons">call</i> +1 234 567 890</a>
+                    <a href="tel:+1234567890"><i class="material-icons">call</i>+44 7886 347683</a>
                 </div>
             </div>
         </div>
@@ -36,11 +39,10 @@
               </div>
           </label>
           <ul class="nav-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a class="cta-nav" href="#">Get Quote</a></li>
+              <li><a href="#home" class="active">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contacts">Contact Us</a></li>
           </ul>
       </div>
       
@@ -48,7 +50,7 @@
       
     </header>
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section id="home" class="hero-section">
          <!-- Hero Image -->
         
          <div class="hero-image">
@@ -77,7 +79,7 @@
         </div>
     </section>
     <!-- About Section -->
-    <section class="about-section container about-grid-container">
+    <section  id="about" class="about-section container about-grid-container">
           <div class="text-content about-grid-item">
             <h2>MCAD Roof Cleaning</h2>
             <div class="sub-services"><span>Roof | Patio | Gutter | Render | Biociding</span></div>
@@ -85,8 +87,8 @@
           
             <p style="display: none;">We will assess the roof in and out and then decide the best course of cleaning for your requirements and then give you a quote.</p>
             <p style="display: none;">As the process will cause some mess, we will clean out the gutters and in certain cases we would wash down soffits and barge boards.</p>
-            <a href="tel:+1234567890" class="cta-button">Show more</a>
-            <a href="tel:+1234567890" class="cta-button">Book now</a>
+            <a href="tel:+44 7886 347683" class="cta-button">Call Us</a>
+            <a class="cta-button">Show more</a>
           </div>
           <div class="about-grid-item">
             <div class="image-content">
@@ -104,12 +106,11 @@
     </div>
   </section>
  <!-- Services Section -->
- <section class="service-section">
+ <section id="services" class="service-section">
   <div class="service-container">
     <h2>Our Services</h2>
     <div class="grid-container container">
       <div class="grid-item">
-        <h3>Roof Cleaning</h2>
         <div class="service-image-container">
           <div class="service-image roof-before">
             <label class="service-images-title">Before</label>
@@ -118,58 +119,45 @@
             <label class="service-images-title">After</label>
           </div>
         </div>
+        <h3>Roof Cleaning</h2>
         <p>We will assess the roof in and out and then decide the best course of cleaning for your requirements and then give you a quote.</p>
-        <div class="readmore">
-          <a href="tel:+1234567890">Read More</a>
-        </div>
       </div>
       <div class="grid-item">
+        <div class="service-image-container">
+          <div class="service-image patio-before">
+            <label class="service-images-title">Before</label>
+          </div>
+          <div class="service-image patio-after">
+            <label class="service-images-title">After</label>
+          </div>
+        </div>
         <h3>Patio Cleaning</h2>
-          <div class="service-image-container">
-            <div class="service-image patio-before">
-              <label class="service-images-title">Before</label>
-            </div>
-            <div class="service-image patio-after">
-              <label class="service-images-title">After</label>
-            </div>
-          </div>
         <p>We do all types of patio, stone and block paving cleaning.  We use different chemicals for different surfaces.  We have been fully trained by Pure Seal in the use of chemicals.</p>
-        <div class="readmore">
-          <a href="tel:+1234567890">Read More</a>
+      </div>
+      <div class="grid-item">
+        <div class="service-image-container">
+          <div class="service-image render-before">
+            <label class="service-images-title">Before</label>
+          </div>
+          <div class="service-image render-after">
+            <label class="service-images-title">After</label>
+          </div>
         </div>
-      </div>
-      <div class="grid-item">
         <h3>Render Cleaning</h2>
-          <div class="service-image-container">
-            <div class="service-image render-before">
-              <label class="service-images-title">Before</label>
-            </div>
-            <div class="service-image render-after">
-              <label class="service-images-title">After</label>
-            </div>
-          </div>
         <p>We do soft washing or very low pressure steam washing of your render and biociding so as to get rid of the organic growth which is on your render.  The results can be amazing as our pictures show.</p>
-          <div class="readmore">
-            <a href="tel:+1234567890">Read More</a>
-          </div>
       </div>
       <div class="grid-item">
+        <div class="service-image-container">
+          <video autoplay loop muted playsinline>
+            <source src="guttercleaning.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <h3>Gutter Cleaning & Repairs</h2>
-          <div class="service-image-container">
-            <div class="service-image gutter-before">
-              <label class="service-images-title">Before</label>
-            </div>
-            <div class="service-image gutter-after">
-              <label class="service-images-title">After</label>
-            </div>
-          </div>
         <p>We use a Gutter Vac so can deal with most heights (up to 40Ft) 
           We undertake all kinds of repairs and can replace if needed.
           Making sure your gutters and downpipes are clean also helps to prevent any damage and damp to your walls.
         </p>
-        <div class="readmore">
-          <a href="tel:+1234567890">Read More</a>
-        </div>
       </div>
 
     </div>
@@ -184,47 +172,49 @@
         </p>
       </div>
     </section>
+    <!-- Certificates Section -->
+
+    <section class="certificates">
+      <h2>Our Certifications</h2>
+      <div class="certificate-list">
+        <div class="certificate-item">
+          <img src="pureseal.jpg" alt="Certificate 1">
+          <h3>Module 1 - Advanced Training in Driveways & Paving Restoration</h3>
+          <p>Issued by PureSeal Services UK Ltd</p>
+        </div>
+        <div class="certificate-item">
+          <img src="pasma.jpg" alt="Certificate 2">
+          <h3>Certificate of Competence</h3>
+          <p>Issued by PASMA</p>
+        </div>
+        <div class="certificate-item">
+          <img src="pressurewash.jpg" alt="Certificate 3">
+          <h3>Certificate of Completion</h3>
+          <p>Issued by CPD</p>
+        </div>
+        <!-- Add more certificate items as needed -->
+      </div>
+    </section>
     <!-- Contact Us Section -->
-  <section class="contact-us-section">
+  <section id="contacts" class="contact-us-section">
     <div class="contact-us-container">
       <h2>Contact Us</h2>
       <div class="info-group">
         <label><i class="material-icons">access_time</i></label><span>8:00 am - 5:00 pm (Mon - Fri)</span>
       </div>
       <div class="info-group">
-        <label><i class="material-icons">place</i></label><span>MCAD UK England</span>
+        <label><i class="material-icons">place</i></label><span>87 Bandford Road
+          Reading
+          RG2 8RR London, England, UK</span>
       </div>
       <div class="info-group">
-        <label><i class="material-icons">call</i></label><span>+2 1243 1233545</span>
+        <label><i class="material-icons">call</i></label><span>+44 7886 347683 <br> +44 7886 347683</span>
       </div>
     </div>
-    <div class="get-intouch-container">
-    
-      <h2>Get Quote</h2>
-      <form>
-        <div class="input-group">
-          <label>First Name </label>
-          <input type="text" name="FirstName" placeholder="Type your First name"/>
-        </div>
-        <div class="input-group">
-          <label>Last Name </label>
-          <input type="text" name="LastName" placeholder="Type your Last name"/>
-        </div>
-        <div class="input-group">
-          <label>Email</label>
-          <input type="text" name="Email" placeholder="Type your Email"/>
-        </div>
-        <div class="input-group">
-          <label>Message</label>
-          <textarea placeholder="Type your message..."></textarea>
-        </div>
-        <input type="submit" value="Send" class="btn-submit">
-      </form>
-    </div>
   </section>
-  <footer style="padding: 20px; background: #394c5e; color: #ffffff; text-align: center;">
+  <footer style="padding: 20px; background: #394c5e; color: #ffffff;">
     <!-- Logo -->
-     <div class="footer-container">
+     <div class="footer-container container">
       <div style="margin-bottom: 15px;">
         <img src="Logo.png" alt="MCAD Logo" style="max-width: 120px;">
       </div>
@@ -248,16 +238,5 @@
      </div>
    
   </footer>
-  
-  
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      
 </body>
 </html>
