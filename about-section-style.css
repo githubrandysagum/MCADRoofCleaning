@@ -32,7 +32,23 @@
   }
   
   /* Call to action button styling */
-  .cta-button {
+  .cta-primary-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #D2851F;
+    color: white;
+    font-size: 1.1rem;
+    font-weight:600;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+    margin-bottom:10%;
+  }
+  .cta-primary-button:hover{
+    padding: 14px 27px;
+  }
+
+  .cta-secondary-button {
     display: inline-block;
     padding: 12px 25px;
     background-color: #233F63;
@@ -44,6 +60,9 @@
     margin-bottom:10%;
   }
   
+  .cta-secondary-button:hover{
+    padding: 14px 27px;
+  }
   .cta-button:hover {
     background-color: #0056b3;
   }
