@@ -1,0 +1,86 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gallery-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #007BFF;
+  }
+  
+  /* Grid Layout */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+  
+  /* Card Styling */
+  .gallery-card {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Set a fixed height for all cards */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .gallery-card .images {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .gallery-card img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover; /* Ensures the images fill the container without distortion */
+  }
+  
+  .gallery-card .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    z-index: 1;
+    text-align: center;
+    pointer-events: none; /* Ensures text doesn't block hover interactions */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .gallery-title {
+      font-size: 1.5rem;
+    }
+    .gallery-card {
+      height: 200px; /* Reduce card height for smaller screens */
+    }
+    .gallery-card .title {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+  
