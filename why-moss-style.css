@@ -1,0 +1,74 @@
+/* Style for the Why Us section */
+.why-moss-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    color: darkgray; /* Text color */
+    text-align: center;
+    overflow: hidden; /* Ensure content doesn't overflow */
+    min-height: 200px;
+  }
+  
+  /* Container to limit the width of the content */
+  .why-moss-container {
+    position: relative;
+    z-index: 2; /* Ensures the text stays above the background */
+  }
+  
+  /* Styling for the heading */
+  .why-moss h2 {
+    color: #233F63; /* Darker color for the header */
+    text-align: center; /* Ensure the title is centered horizontally */
+  }
+  
+ 
+
+  .why-moss video {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5%;
+    object-fit: cover; /* Ensures the video fills its container neatly */
+    border-radius: 10px;
+    max-width: 700px;
+  }
+  /* Style each video item */
+.video-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Needed for positioning the play/pause buttons */
+  overflow: hidden;
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+
+  video {
+    width: 100%;  /* Let the video take full width */
+    height: 100%; /* Let the video take full height */
+    object-fit: cover;  /* Make sure the video covers the entire container */
+    display: block;
+  }
+
+  /* Style for both play and pause buttons */
+.play-button,
+.pause-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none; /* Initially hide both buttons */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index:10;
+
+}

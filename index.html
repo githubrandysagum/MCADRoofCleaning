@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="about-section-style.css">
     <link rel="stylesheet" href="benefits-section-style.css">
     <link rel="stylesheet" href="why-choose-us-style.css">
+    <link rel="stylesheet" href="why-moss-style.css">
     <link rel="stylesheet" href="services-section-style.css">
     <link rel="stylesheet" href="contact-us-section-style.css">
     <link rel="stylesheet" href="certificates-section.css">
@@ -108,6 +109,8 @@
       </p>
     </div>
   </section>
+
+  
  <!-- Services Section -->
  <section id="services" class="service-section">
   <div class="service-container">
@@ -164,6 +167,19 @@
       </div>
 
     </div>
+</section>
+<section class="why-moss-section">
+  <div class="why-moss container">
+    <h2>Why moss cracks tiles?</h2>
+    <div class="video-item">
+    <video class="whymossvideo">
+      <source src="roofmoss.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <button class="play-button">Play</button>
+    <button class="pause-button">Pause</button>
+    </div>
+  </div>
 </section>
    <!-- Benefits Section -->
     <section class="full-width-image">
@@ -252,5 +268,38 @@
      </div>
    
   </footer>
+
+  <script>
+    // Select all play, pause buttons, and videos
+ const playButtons = document.querySelectorAll('.play-button');
+ const pauseButtons = document.querySelectorAll('.pause-button');
+ const videos = document.querySelectorAll('.whymossvideo');
+ 
+ // Initially hide the pause button and show the play button
+ videos.forEach((video, index) => {
+   const playButton = playButtons[index];
+   const pauseButton = pauseButtons[index];
+   
+   // Show the play button and hide the pause button when the video is paused
+   playButton.style.display = 'block';
+   pauseButton.style.display = 'none';
+ 
+   // Play button event listener
+   playButton.addEventListener('click', () => {
+     video.play();
+     playButton.style.display = 'none';  // Hide play button
+     pauseButton.style.display = 'block'; // Show pause button
+   });
+ 
+   // Pause button event listener
+   pauseButton.addEventListener('click', () => {
+     video.pause();
+     playButton.style.display = 'block';  // Show play button
+     pauseButton.style.display = 'none';  // Hide pause button
+   });
+ });
+ 
+ 
+   </script>
 </body>
 </html>
