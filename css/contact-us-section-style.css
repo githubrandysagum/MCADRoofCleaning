@@ -24,7 +24,7 @@
     font-size: 16px;
 }
 
-.contact-us-container .info-group label{
+.info-group label .material-icons{
     color : #ffab3d;
 }
 .contact-us-container .info-group span{
