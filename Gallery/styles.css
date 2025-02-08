@@ -164,3 +164,7 @@ video {
     grid-template-columns: 1fr; /* Stack videos vertically on small screens */
   }
 }
+
+.before{
+  border-right: 5px solid #ad680f;
+}
