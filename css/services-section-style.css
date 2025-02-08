@@ -75,37 +75,37 @@
 
     .roof-before{
       border-right: 2px solid #D2851F;
-      background-image: url('roof-before.jpg'); /* Replace with your image URL */
+      background-image: url('../images/roof-before.jpg'); /* Replace with your image URL */
     }
     .roof-after{
       border-left: 2px solid #D2851F;
-      background-image: url('roof-after.jpg'); /* Replace with your image URL */
+      background-image: url('../images/roof-after.jpg'); /* Replace with your image URL */
     }
 
     .patio-before{
       border-right: 2px solid #D2851F;
-      background-image: url('patio-before.jpg'); /* Replace with your image URL */
+      background-image: url('../images/patio-before.jpg'); /* Replace with your image URL */
     }
     .patio-after{
       border-left: 2px solid #D2851F;
-      background-image: url('patio-after.jpg'); /* Replace with your image URL */
+      background-image: url('../images/patio-after.jpg'); /* Replace with your image URL */
     }
 
     .render-before{
       border-right: 2px solid #D2851F;
-      background-image: url('render-before.jpg'); /* Replace with your image URL */
+      background-image: url('../images/render-before.jpg'); /* Replace with your image URL */
     }
     .render-after{
       border-left: 2px solid #D2851F;
-      background-image: url('render-after.jpg'); /* Replace with your image URL */
+      background-image: url('../images/render-after.jpg'); /* Replace with your image URL */
     }
 
     .gutter-before{
       border-right: 2px solid #D2851F;
-      background-image: url('Hero-Small-Img.jpg'); /* Replace with your image URL */
+      background-image: url('../images/Hero-Small-Img.jpg'); /* Replace with your image URL */
     }
     .gutter-after{
-      background-image: url('Hero-Small-Img.jpg'); /* Replace with your image URL */
+      background-image: url('../images/Hero-Small-Img.jpg'); /* Replace with your image URL */
     }
 
   .service-section p{
