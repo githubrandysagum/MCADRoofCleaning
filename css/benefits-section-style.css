@@ -4,7 +4,7 @@
     opacity: 110%;
     width: 100%;
     height: 50vh; /* Adjusted height to a more moderate size */
-    background-image: url('BenefitSection.jpg'); /* Replace with your image URL */
+    background-image: url('../images/BenefitSection.jpg'); /* Replace with your image URL */
     background-size: cover;
     background-attachment: fixed;  /* Makes the background image fixed */
     color: rgb(178, 176, 172); /* Text color */
