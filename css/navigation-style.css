@@ -13,6 +13,42 @@
   width: 100%;
 }
 
+/* Sticky Navbar - only for non-mobile screens */
+@media screen and (min-width: 751px) {
+  .navbar.sticky {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 9999 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 7.5% !important;
+    padding-right: 5% !important;
+    background-color: white !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    margin: 0 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .navbar.sticky .logo,
+  .navbar.sticky .nav-links,
+  .navbar.sticky .nav-links li,
+  .navbar.sticky .nav-links a {
+    z-index: 10000 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .navbar.sticky .nav-links {
+    display: flex !important;
+  }
+}
+
 /* Logo Styles */
 .navbar .logo img {
   z-index: 40;
