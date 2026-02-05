@@ -11,6 +11,9 @@
   padding-bottom: 20px;
   background-color:white;
   width: 100%;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
 }
 
 /* Sticky Navbar - only for non-mobile screens */
@@ -134,9 +137,15 @@
 }
 /* Mobile Styles (for screen sizes 768px and below) */
 @media screen and (max-width: 750px) {
+  .navbar {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
   .nav-links {
       position: absolute;
       top: 80px;
+      left: 0;
       right: 0;
       font-weight: bold;
       background-color: #fff;
@@ -148,6 +157,7 @@
       display: none;
       z-index: 5;
       padding: 10%;
+      box-sizing: border-box;
   }
 
   .nav-links li{

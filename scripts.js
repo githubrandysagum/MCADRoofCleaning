@@ -185,10 +185,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (scrollBtns.length) {
       scrollBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
-          const inquirySection = document.getElementById('inquiry');
-          if (inquirySection) {
+          const contactsSection = document.getElementById('contacts');
+          if (contactsSection) {
             e.preventDefault();
-            inquirySection.scrollIntoView({ behavior: 'smooth' });
+            contactsSection.scrollIntoView({ behavior: 'smooth' });
           }
         });
       });
@@ -220,5 +220,46 @@ document.addEventListener('DOMContentLoaded', function() {
       playButton.style.display = 'block';  // Show play button
       pauseButton.style.display = 'none';  // Hide pause button
     });
+
+    // Pause video when scrolled out of view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // If video is not intersecting (out of view) and is playing
+        if (!entry.isIntersecting && !video.paused) {
+          video.pause();
+          playButton.style.display = 'block';  // Show play button
+          pauseButton.style.display = 'none';  // Hide pause button
+        }
+      });
+    }, {
+      threshold: 0.5  // Pause when less than 50% of video is visible
+    });
+
+    // Start observing the video
+    observer.observe(video);
   });
+
+  // Hide/Show CTA Banner on scroll (mobile only)
+  let scrollTimer = null;
+  let isScrolling = false;
+  const ctaBanner = document.querySelector('.cta-banner');
+  
+  if (ctaBanner && window.innerWidth < 768) {
+    window.addEventListener('scroll', function() {
+      // User is scrolling - hide banner
+      if (!isScrolling) {
+        isScrolling = true;
+        ctaBanner.classList.add('hide-on-scroll');
+      }
+      
+      // Clear previous timer
+      clearTimeout(scrollTimer);
+      
+      // Set a new timer to show banner after user stops scrolling
+      scrollTimer = setTimeout(function() {
+        isScrolling = false;
+        ctaBanner.classList.remove('hide-on-scroll');
+      }, 600); // Show banner 600ms after scrolling stops
+    });
+  }
 });
