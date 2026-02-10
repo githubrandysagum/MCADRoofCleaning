@@ -1,11 +1,18 @@
-name = "mcad-inquiry-worker-test"
+name = "tes-mcad-inquiry-worker"
 main = "worker.test.js"
 compatibility_date = "2024-01-01"
 
 # Environment variables (secrets)
-# Set these using: wrangler secret put RECIPIENT_EMAIL
-# Note: TURNSTILE_SECRET_KEY not needed for test version
+# Required:
+#   N8N_WEBHOOK_URL - Your n8n webhook URL
+# 
+# Optional:
+#   N8N_API_KEY - Shared secret for authentication (recommended)
+#   TURNSTILE_SECRET_KEY - For Turnstile verification (future)
 
-# You can also use .dev.vars file for local development
-# Create a .dev.vars file with:
-# RECIPIENT_EMAIL=your-email@example.com
+# Set secrets using wrangler CLI:
+# wrangler secret put N8N_WEBHOOK_URL -c wrangler.test.toml
+# wrangler secret put N8N_API_KEY -c wrangler.test.toml
+
+# Or via Cloudflare Dashboard:
+# Workers & Pages → tes-mcad-inquiry-worker → Settings → Variables and Secrets

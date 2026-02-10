@@ -1,97 +1,146 @@
-# Test Version of Inquiry Worker
+# Test Worker - n8n Integration
 
-## ⚠️ Important
+## 🎯 Purpose
 
-This test version **SKIPS TURNSTILE VERIFICATION** for easier testing. 
+Test version of the inquiry worker that:
+- ✅ Validates form data
+- ✅ Sends to n8n webhook
+- ✅ n8n processes and sends email via Gmail
+- ⚠️ **Skips Turnstile verification** for easy testing
 
-**DO NOT use this in production!** It's vulnerable to spam without Turnstile protection.
+**Flow:**
+```
+Form → Cloudflare Worker → n8n Webhook → Gmail
+```
 
-## What's Different in Test Version?
+## 🚀 Deployment
 
-### worker.test.js
-- ✅ Accepts form submissions without valid Turnstile token
-- ✅ **CORS enabled for ALL origins** (localhost, 127.0.0.1, your domain)
-- ✅ Works with local development (no CORS blocking)
-- ✅ Still validates name, email, message fields
-- ✅ Still sends email via MailChannels
-- ✅ Emails are marked with `[TEST]` prefix
-- ⚠️ No spam protection
-- ⚠️ Allows requests from anywhere (testing only!)
+### Option 1: Update Existing Worker
 
-### worker.js (Production)
-- ✅ Full Turnstile verification
-- ✅ CORS restricted to your domain only
-- ✅ Validates all fields
-- ✅ Sends email via MailChannels
-- ✅ Protected against spam/bots
-
-## How to Deploy Test Version
-
-### Option 1: Via Cloudflare Dashboard (UI)
+If you already deployed `tes-mcad-inquiry-worker`:
 
 1. Go to https://dash.cloudflare.com
-2. Workers & Pages → Create Worker
-3. Name it: `mcad-inquiry-worker-test`
-4. Click Deploy
-5. Click **Edit Code**
-6. Copy all code from `worker.test.js`
-7. Paste into editor
-8. Click **Save and Deploy**
-9. Go to Settings → Variables and Secrets
-10. Add only: `RECIPIENT_EMAIL` (no need for TURNSTILE_SECRET_KEY)
+2. **Workers & Pages** → **tes-mcad-inquiry-worker**
+3. Click **Edit Code**
+4. **Delete all code**
+5. **Copy all code** from `worker.test.js`
+6. **Paste** into editor
+7. Click **Save and Deploy**
 
-### Option 2: Via Command Line
+### Option 2: Deploy via Wrangler CLI
 
 ```bash
 cd workers/inquiry
-wrangler secret put RECIPIENT_EMAIL -c wrangler.test.toml
 wrangler deploy -c wrangler.test.toml
 ```
 
-## Testing
+## 🔒 Set Secrets
 
-### Local Testing (No CORS Issues!)
+**Required:** N8N_WEBHOOK_URL
 
-Once deployed, you can test from your local machine:
+**Via Cloudflare Dashboard:**
+1. **Workers & Pages** → **tes-mcad-inquiry-worker**
+2. **Settings** → **Variables and Secrets**
+3. Click **Add variable**
+   - Name: `N8N_WEBHOOK_URL`
+   - Value: Your n8n webhook URL
+   - ✅ **Encrypt**
 
-**1. Get your test worker URL:**
-`https://mcad-inquiry-worker-test.YOUR_ACCOUNT.workers.dev`
+**Optional but Recommended:** N8N_API_KEY
+4. Click **Add variable**
+   - Name: `N8N_API_KEY`
+   - Value: Your shared secret
+   - ✅ **Encrypt**
 
-**2. Update `scripts.js`:**
-```javascript
-// Line 194 - use test URL
-const response = await fetch('https://mcad-inquiry-worker-test.YOUR_ACCOUNT.workers.dev', {
+**Via Wrangler CLI:**
+```bash
+wrangler secret put N8N_WEBHOOK_URL -c wrangler.test.toml
+wrangler secret put N8N_API_KEY -c wrangler.test.toml
 ```
 
-**3. Open your HTML file locally:**
-- Open `index.html` in your browser (file:// or http://localhost)
-- Fill out the form
-- Submit - **No CORS errors!**
-- Check your email
+## 📧 n8n Workflow Setup
 
-### Testing on Live Site
+### 1. Create Webhook Node (Trigger)
+- Method: **POST**
+- Response Mode: **When Last Node Finishes**
+- Copy the webhook URL
 
-Same steps work on your live website too!
+### 2. Optional: Add Function Node (API Key Auth)
+```javascript
+const apiKey = $request.headers['x-api-key'];
+if (apiKey !== $env.N8N_API_KEY) {
+  throw new Error('Unauthorized');
+}
+return $input.all();
+```
 
-**Benefits of test version:**
-- ✅ Works from localhost/127.0.0.1
-- ✅ Works from file:// URLs
-- ✅ Works from your live domain
-- ✅ No Turnstile verification needed
-- ✅ No CORS blocking
+### 3. Add Gmail Node
+- **To:** Your email address
+- **Subject:** `New Inquiry from {{$json.name}}`
+- **Message:**
+```
+New inquiry received:
 
-## Switching to Production
+Name: {{$json.name}}
+Email: {{$json.email}}
+Phone: {{$json.phone}}
+Message: {{$json.message}}
 
-When ready for production:
+Submitted: {{$json.submittedAt}}
+Source: {{$json.source}}
+Test Mode: {{$json.testMode}}
+```
 
-1. Deploy the production version (`worker.js`)
-2. Add both secrets: `TURNSTILE_SECRET_KEY` and `RECIPIENT_EMAIL`
-3. Update `scripts.js` to production URL
-4. Delete test worker
+### 4. Activate Workflow
+- Click **Active** toggle
+- Copy webhook URL for Cloudflare secrets
 
-## Tips
+## 📝 Payload Structure
 
-- Emails from test version have `[TEST]` in subject line
-- Check Cloudflare Workers logs if emails don't arrive
-- Test version still requires form fields to be filled
-- Turnstile widget will still show on your form, but verification is skipped on backend
+The worker sends this to n8n:
+
+```json
+{
+  "name": "User Name",
+  "email": "user@example.com",
+  "phone": "1234567890",
+  "message": "User's message",
+  "submittedAt": "2026-02-10T12:34:56.789Z",
+  "source": "mcadroofcleaning.co.uk",
+  "testMode": true,
+  "verified": true
+}
+```
+
+## 🧪 Testing
+
+1. Open `test-index.html` in browser
+2. Fill form with test data
+3. Submit
+4. Check:
+   - ✅ Browser shows success message
+   - ✅ Cloudflare Worker logs (no errors)
+   - ✅ n8n workflow execution (successful)
+   - ✅ Gmail inbox (email received)
+
+## 🔒 Security Notes
+
+This test version:
+- ✅ Has CORS open for testing
+- ✅ Skips Turnstile verification
+- ✅ Webhook URL stored as encrypted secret
+- ✅ Optional API key for n8n authentication
+
+For production (worker.js):
+- Add Turnstile verification
+- Restrict CORS to your domain only
+- Keep all secrets encrypted
+
+## 🔄 Next Steps
+
+1. ✅ Create n8n workflow
+2. ✅ Get webhook URL
+3. ✅ Add N8N_WEBHOOK_URL to Cloudflare
+4. ✅ Test with test-index.html
+5. ✅ Verify email delivery
+6. ✅ Move to production worker.js with Turnstile
