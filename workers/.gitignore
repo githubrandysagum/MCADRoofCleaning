@@ -1,0 +1,13 @@
+# Ignore development environment variables
+.dev.vars
+
+# Ignore wrangler output
+.wrangler/
+wrangler.toml.backup
+
+# Node modules (if using npm packages)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

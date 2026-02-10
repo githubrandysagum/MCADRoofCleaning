@@ -141,17 +141,38 @@ document.addEventListener('DOMContentLoaded', function() {
   handleStickyNav(); // Initial check
   */
 
-  // Inquiry Form Validation
+  // Turnstile verification flag
+  let turnstileVerified = false;
+  let turnstileToken = null;
+  
+  window.onTurnstileSuccess = function(token) {
+    turnstileVerified = true;
+    turnstileToken = token;
+  };
+  
+  window.onTurnstileExpire = function() {
+    turnstileVerified = false;
+    turnstileToken = null;
+  };
+
+  // Inquiry Form Validation and Submission
   const inquiryForm = document.querySelector('.inquiry-form');
   if (inquiryForm) {
-    inquiryForm.addEventListener('submit', function(e) {
-      // Remove previous errors
+    inquiryForm.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Always prevent default to handle with JavaScript
+      
+      // Remove previous errors and success messages
       const prevErrors = inquiryForm.querySelectorAll('.form-error');
       prevErrors.forEach(el => el.remove());
+      const prevSuccess = inquiryForm.querySelectorAll('.form-success');
+      prevSuccess.forEach(el => el.remove());
 
       let valid = true;
       const name = inquiryForm.querySelector('#inquiry-name');
       const email = inquiryForm.querySelector('#inquiry-email');
+      const message = inquiryForm.querySelector('#inquiry-message');
+      const turnstileWidget = inquiryForm.querySelector('.cf-turnstile');
+      
       // Name validation
       if (!name.value.trim()) {
         showError(name, 'Name is required.');
@@ -165,10 +186,80 @@ document.addEventListener('DOMContentLoaded', function() {
         showError(email, 'Please enter a valid email address.');
         valid = false;
       }
+      // Message validation
+      if (!message.value.trim()) {
+        showError(message, 'Message is required.');
+        valid = false;
+      }
+      // Turnstile validation (skip in test mode)
+      if (!window.TEST_MODE && !turnstileVerified) {
+        showError(turnstileWidget, 'Please complete the security verification.');
+        valid = false;
+      }
+      
       if (!valid) {
-        e.preventDefault();
+        return;
+      }
+
+      // Get submit button and show loading state
+      const submitButton = inquiryForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+
+      try {
+        // Check if we're in test mode (set by test-index.html)
+        const apiUrl = window.TEST_MODE && window.TEST_API_URL 
+          ? window.TEST_API_URL 
+          : 'https://api.mcadroofcleaning.co.uk/inquiry';
+        
+        console.log('Submitting to:', apiUrl);
+        
+        // Send to API endpoint
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name.value.trim(),
+            email: email.value.trim(),
+            message: message.value.trim(),
+            turnstileToken: turnstileToken
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Show success message
+          showSuccessMessage(inquiryForm, result.message || 'Thank you! Your message has been sent successfully.');
+          
+          // Reset form
+          inquiryForm.reset();
+          
+          // Reset Turnstile
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+          turnstileVerified = false;
+          turnstileToken = null;
+          
+        } else {
+          // Show error message
+          showError(turnstileWidget, result.error || 'An error occurred. Please try again.');
+        }
+
+      } catch (error) {
+        console.error('Form submission error:', error);
+        showError(turnstileWidget, 'Network error. Please check your connection and try again.');
+      } finally {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
       }
     });
+    
     function showError(input, message) {
       const error = document.createElement('div');
       error.className = 'form-error';
@@ -177,6 +268,25 @@ document.addEventListener('DOMContentLoaded', function() {
       error.style.marginTop = '0.2em';
       error.textContent = message;
       input.parentNode.appendChild(error);
+    }
+    
+    function showSuccessMessage(form, message) {
+      const success = document.createElement('div');
+      success.className = 'form-success';
+      success.style.color = '#155724';
+      success.style.fontSize = '1.1em';
+      success.style.padding = '1em';
+      success.style.marginTop = '1em';
+      success.style.backgroundColor = '#d4edda';
+      success.style.border = '1px solid #c3e6cb';
+      success.style.borderRadius = '4px';
+      success.textContent = message;
+      form.appendChild(success);
+
+      // Remove after 5 seconds
+      setTimeout(() => {
+        success.remove();
+      }, 5000);
     }
   }
 

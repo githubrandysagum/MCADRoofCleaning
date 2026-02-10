@@ -1,0 +1,17 @@
+name = "mcad-api-router"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Service bindings to other workers
+[[services]]
+binding = "INQUIRY_WORKER"
+service = "mcad-inquiry-worker"
+
+# Uncomment when you create these workers:
+# [[services]]
+# binding = "BOOKING_WORKER"
+# service = "mcad-booking-worker"
+
+# [[services]]
+# binding = "QUOTE_WORKER"
+# service = "mcad-quote-worker"

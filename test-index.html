@@ -15,7 +15,7 @@
     <meta name="description" content="Professional roof, patio, gutter, and render cleaning in Reading, UK. MCAD delivers safe, efficient, and outstanding exterior cleaning services for homes and businesses.">
     <meta name="keywords" content="roof cleaning Reading, moss removal Reading, patio cleaning Reading, gutter cleaning Reading, render cleaning Reading, wall cleaning Reading, driveway cleaning Reading, biociding services, roof moss removal, professional exterior cleaning UK, roof maintenance Reading, Berkshire roof cleaning">
     <meta name="author" content="MCAD Roof Cleaning Services">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://www.mcadroof.co.uk/">
     
     <!-- Open Graph Meta Tags for Social Media -->
@@ -39,11 +39,53 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="preload" as="image" href="./images/Hero-large.jpg">
-    <title>Roof Cleaning Reading | Patio, Gutter & Render Cleaning | MCAD UK</title>
+    <title>🧪 TEST - Roof Cleaning Reading | MCAD UK</title>
     <link rel="stylesheet" href="./css/main.css">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
+    <!-- TEST CONFIGURATION -->
+    <style>
+      .test-banner {
+        background: #ff9800;
+        color: #000;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 16px;
+        position: sticky;
+        top: 0;
+        z-index: 10000;
+        border-bottom: 3px solid #f57c00;
+      }
+      .test-banner .test-url {
+        display: block;
+        font-size: 12px;
+        margin-top: 5px;
+        font-family: monospace;
+        background: rgba(0,0,0,0.1);
+        padding: 5px;
+        border-radius: 3px;
+      }
+    </style>
+    
+    <script>
+      // ⚠️ TEST MODE: Override API endpoint
+      window.TEST_MODE = true;
+      window.TEST_API_URL = 'https://tes-mcad-inquiry-worker.randy-h-sagum.workers.dev';
+    </script>
 </head>
 <body>
+    <!-- TEST MODE BANNER -->
+    <div class="test-banner">
+      🧪 TEST MODE - This page uses the test worker (no Turnstile verification)
+      <span class="test-url">Worker URL: <span id="current-worker-url">Not configured yet</span></span>
+    </div>
+    
+    <script>
+      // Display current test URL
+      document.getElementById('current-worker-url').textContent = window.TEST_API_URL;
+    </script>
+    
     <header>
         <div class="cta-banner">
             <div class="cta-content container">
@@ -132,8 +174,11 @@
     <!-- Inquiry Section -->
     <section id="inquiry" class="inquiry-section container">
       <div class="inquiry-container">
-        <h2>Get a Free Quote for Roof Cleaning in Reading</h2>
+        <h2>🧪 TEST FORM - Get a Free Quote for Roof Cleaning in Reading</h2>
         <p>Have a question or want a quote? Fill out the form below and we'll get back to you soon!</p>
+        <p style="background: #fff3cd; padding: 10px; border-left: 4px solid #ff9800; margin-bottom: 15px;">
+          <strong>⚠️ Test Mode:</strong> This form submission will be sent to your test worker. Turnstile verification is skipped.
+        </p>
         <form class="inquiry-form" action="#" method="post" autocomplete="on">
           <div class="form-group">
             <label for="inquiry-name">Name<span style="color:red">*</span></label>
@@ -148,7 +193,10 @@
             <textarea id="inquiry-message" name="message" rows="4" placeholder="Type your inquiry here..."></textarea>
           </div>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAACZqJgt4qUkTzJFxeZiPs687Ud8" data-theme="light" data-callback="onTurnstileSuccess"></div>
-          <button type="submit" class="inquire-btn">Submit Inquiry</button>
+          <p style="font-size: 12px; color: #666; margin-top: 5px;">
+            <em>Note: Turnstile widget will show but verification is bypassed in test mode.</em>
+          </p>
+          <button type="submit" class="inquire-btn">Submit Test Inquiry</button>
         </form>
       </div>
     </section>
@@ -157,7 +205,7 @@
           <div class="text-content about-grid-item">
             <h2><span class="gold-text">MCAD Roof Cleaning Services in Reading, Berkshire</span></h2>
             <h3 class="sub-services"><span>Roof | Patio | Gutter | Render | Biociding | Air Technology</span></h3>
-            <p>We are fully qualified in roof cleaning and biociding.  We take our health and safety seriously, providing all our own access equipment (we do not hire any equipment as we can not guarantee the safety of it).</p>
+            <p>We are fully qualified in roof cleaning and biociding.  We take our health and safety seriously, providing all our own access equipment (we do not hire any equipment as we can not guarantee the safety of it).</p>
           
             <p style="display: none;">We will assess the roof in and out and then decide the best course of cleaning for your requirements and then give you a quote.</p>
             <p style="display: none;">As the process will cause some mess, we will clean out the gutters and in certain cases we would wash down soffits and barge boards.</p>
@@ -210,7 +258,7 @@
           </div>
         </div>
         <h3>Patio & Driveway Cleaning Services</h3>
-        <p>We do all types of patio, stone and block paving cleaning.  We use different chemicals for different surfaces.  We have been fully trained by Pure Seal in the use of chemicals.</p>
+        <p>We do all types of patio, stone and block paving cleaning.  We use different chemicals for different surfaces.  We have been fully trained by Pure Seal in the use of chemicals.</p>
         <a href="#contacts" class="inquire-btn scroll-to-inquiry">Inquire Now</a>
       </div>
       <div class="grid-item">
@@ -223,7 +271,7 @@
           </div>
         </div>
         <h3>Render & Wall Cleaning with Soft Washing</h3>
-        <p>We do soft washing or very low pressure steam washing of your render and biociding so as to get rid of the organic growth which is on your render.  The results can be amazing as our pictures show.</p>
+        <p>We do soft washing or very low pressure steam washing of your render and biociding so as to get rid of the organic growth which is on your render.  The results can be amazing as our pictures show.</p>
         <a href="#contacts" class="inquire-btn scroll-to-inquiry">Inquire Now</a>
       </div>
       

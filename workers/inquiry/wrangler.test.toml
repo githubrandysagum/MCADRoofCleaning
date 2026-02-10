@@ -1,0 +1,11 @@
+name = "mcad-inquiry-worker-test"
+main = "worker.test.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables (secrets)
+# Set these using: wrangler secret put RECIPIENT_EMAIL
+# Note: TURNSTILE_SECRET_KEY not needed for test version
+
+# You can also use .dev.vars file for local development
+# Create a .dev.vars file with:
+# RECIPIENT_EMAIL=your-email@example.com

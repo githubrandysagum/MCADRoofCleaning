@@ -1,0 +1,5 @@
+# Development environment variables for inquiry worker
+# Copy this file and rename to .dev.vars (which is gitignored)
+
+TURNSTILE_SECRET_KEY=your-turnstile-secret-key-here
+RECIPIENT_EMAIL=your-email@example.com
