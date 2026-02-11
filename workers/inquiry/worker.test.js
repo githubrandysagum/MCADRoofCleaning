@@ -69,27 +69,25 @@ export default {
 
       // ⚠️ TEST MODE: Skipping Turnstile verification
       console.log('TEST MODE: Turnstile verification skipped');
-      console.log('Turnstile Token received:', turnstileToken ? 'Present' : 'Missing');
 
-      // Prepare payload for n8n
+      // Validate inputs are ready for n8n
+      console.log('✓ All required fields validated');
+      console.log('Preparing to send to n8n...');
+
+      // Prepare clean payload for n8n with validated inputs
       const n8nPayload = {
         name: name.trim(),
         email: email.trim(),
-        phone: phone ? phone.trim() : null,
-        message: message.trim(),
-        submittedAt: new Date().toISOString(),
-        source: 'mcadroofcleaning.co.uk',
-        testMode: true, // Flag for n8n to know this is a test
-        verified: !!turnstileToken
+        message: message.trim()
       };
 
-      // Send to n8n webhook
+      console.log('Payload ready:', { name: n8nPayload.name, email: n8nPayload.email });
+
+      // POST to n8n webhook URL
       const n8nResponse = await fetch(env.N8N_WEBHOOK_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          // Optional: Add authentication header
-          ...(env.N8N_API_KEY && { 'X-API-Key': env.N8N_API_KEY })
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(n8nPayload)
       });
