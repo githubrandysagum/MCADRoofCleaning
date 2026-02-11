@@ -1,0 +1,32 @@
+name = "mcad-inquiry-worker"
+main = "worker.production.js"
+compatibility_date = "2024-01-01"
+
+# KV Namespace bindings for rate limiting
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "YOUR_KV_NAMESPACE_ID"  # Replace with actual KV namespace ID from dashboard
+
+# Environment variables (set via dashboard or wrangler secret)
+# REQUIRED SECRETS (set these in Cloudflare Dashboard):
+#   TURNSTILE_SECRET_KEY - Your Cloudflare Turnstile secret key
+#   N8N_WEBHOOK_URL - Your n8n webhook URL for email processing
+#   N8N_API_KEY - (Optional) Shared secret for n8n authentication
+
+# To set secrets via CLI:
+# wrangler secret put TURNSTILE_SECRET_KEY
+# wrangler secret put N8N_WEBHOOK_URL
+# wrangler secret put N8N_API_KEY
+
+# For local development, create .dev.vars file with:
+# TURNSTILE_SECRET_KEY=your-secret-key-here
+# N8N_WEBHOOK_URL=http://localhost:5678/webhook/inquiry
+# N8N_API_KEY=your-api-key-here
+
+# Observability (optional - for production monitoring)
+[observability]
+enabled = true
+
+# Limits (optional - adjust based on your needs)
+# [limits]
+# cpu_ms = 50  # Maximum CPU time in milliseconds

@@ -2,13 +2,19 @@ name = "tes-mcad-inquiry-worker"
 main = "worker.test.js"
 compatibility_date = "2024-01-01"
 
+# KV Namespace bindings for rate limiting (OPTIONAL for testing)
+# Uncomment and add your KV namespace ID to test rate limiting:
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "YOUR_KV_NAMESPACE_ID"
+
 # Environment variables (secrets)
 # Required:
 #   N8N_WEBHOOK_URL - Your n8n webhook URL
 # 
 # Optional:
 #   N8N_API_KEY - Shared secret for authentication (recommended)
-#   TURNSTILE_SECRET_KEY - For Turnstile verification (future)
+#   RATE_LIMIT_KV - KV namespace for rate limiting (if you want to test it)
 
 # Set secrets using wrangler CLI:
 # wrangler secret put N8N_WEBHOOK_URL -c wrangler.test.toml
@@ -16,3 +22,9 @@ compatibility_date = "2024-01-01"
 
 # Or via Cloudflare Dashboard:
 # Workers & Pages → tes-mcad-inquiry-worker → Settings → Variables and Secrets
+
+# To test rate limiting:
+# 1. Create KV namespace in dashboard or via: wrangler kv:namespace create "RATE_LIMIT_KV"
+# 2. Uncomment the [[kv_namespaces]] section above
+# 3. Add the namespace ID from step 1
+# 4. Redeploy worker

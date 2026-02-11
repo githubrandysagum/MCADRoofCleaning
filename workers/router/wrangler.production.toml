@@ -1,0 +1,24 @@
+name = "mcad-api-router"
+main = "worker.production.js"
+compatibility_date = "2024-01-01"
+
+# Service bindings to other workers
+[[services]]
+binding = "INQUIRY_WORKER"
+service = "mcad-inquiry-worker"
+environment = "production"
+
+# Future service bindings (uncomment when ready)
+# [[services]]
+# binding = "BOOKING_WORKER"
+# service = "mcad-booking-worker"
+# environment = "production"
+
+# [[services]]
+# binding = "QUOTE_WORKER"
+# service = "mcad-quote-worker"
+# environment = "production"
+
+# Observability (optional - for production monitoring)
+[observability]
+enabled = true

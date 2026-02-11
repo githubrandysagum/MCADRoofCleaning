@@ -1,30 +1,14 @@
 /**
- * Inquiry Worker - Enhanced Test Version
- * 
- * Includes ALL production security features for testing:
- * ✅ Rate limiting (5 req/5min per IP)
- * ✅ Input validation (15+ rules)
- * ✅ Input sanitization (XSS prevention)
- * ✅ Request size limits (10KB)
- * ✅ Security headers
- * ✅ Structured JSON logging
- * ✅ Error tracking with request IDs
- * ✅ Timeout protection
- * ✅ Comprehensive error handling
- * 
- * TESTING ONLY - Excludes for easy testing:
- * ⚠️ Turnstile verification (skipped)
- * ⚠️ CORS restrictions (permissive for testing)
+ * Inquiry Worker - Production Version
+ * Handles inquiry form submissions with n8n integration
+ * Includes: Turnstile verification, input validation, sanitization, rate limiting, and logging
  */
 
 export default {
   async fetch(request, env, ctx) {
-    // Get origin from request for CORS (permissive for testing)
-    const origin = request.headers.get('Origin') || '*';
-    
-    // Security headers and CORS (permissive origin for testing)
+    // Security headers and CORS
     const corsHeaders = {
-      'Access-Control-Allow-Origin': origin, // ⚠️ Permissive for testing
+      'Access-Control-Allow-Origin': 'https://mcadroofcleaning.co.uk',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       'X-Content-Type-Options': 'nosniff',
@@ -58,7 +42,6 @@ export default {
         event: 'INQUIRY_REQUEST_START',
         ip: clientIP,
         userAgent: request.headers.get('User-Agent'),
-        testMode: true,
       }));
 
       // Check request size (prevent DoS)
@@ -83,7 +66,6 @@ export default {
             event: 'RATE_LIMIT_EXCEEDED',
             ip: clientIP,
             remaining: rateLimitResult.remaining,
-            testMode: true,
           }));
           
           return createErrorResponse(
@@ -94,14 +76,6 @@ export default {
             requestId
           );
         }
-      } else {
-        console.warn(JSON.stringify({
-          timestamp: new Date().toISOString(),
-          requestId,
-          event: 'RATE_LIMIT_SKIPPED',
-          reason: 'KV namespace not bound',
-          testMode: true,
-        }));
       }
 
       // Parse JSON with timeout protection
@@ -127,7 +101,6 @@ export default {
           requestId,
           event: 'JSON_PARSE_ERROR',
           error: parseError.message,
-          testMode: true,
         }));
         
         return createErrorResponse(
@@ -143,14 +116,13 @@ export default {
       const { name, email, phone, message, turnstileToken } = data;
 
       // Validate required fields
-      const validationResult = validateInputs({ name, email, phone, message });
+      const validationResult = validateInputs({ name, email, phone, message, turnstileToken });
       if (!validationResult.valid) {
         console.warn(JSON.stringify({
           timestamp: new Date().toISOString(),
           requestId,
           event: 'VALIDATION_FAILED',
           errors: validationResult.errors,
-          testMode: true,
         }));
         
         return createErrorResponse(
@@ -170,13 +142,71 @@ export default {
         message: sanitizeInput(message, 5000),
       };
 
-      // ⚠️ TEST MODE: Skipping Turnstile verification
+      // Verify Turnstile token
       console.log(JSON.stringify({
         timestamp: new Date().toISOString(),
         requestId,
-        event: 'TURNSTILE_SKIPPED',
-        reason: 'Test mode - would verify in production',
-        testMode: true,
+        event: 'TURNSTILE_VERIFY_START',
+      }));
+
+      let turnstileResult;
+      try {
+        const turnstileVerification = await fetch(
+          'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              secret: env.TURNSTILE_SECRET_KEY,
+              response: turnstileToken,
+              remoteip: clientIP,
+            }),
+          }
+        );
+
+        if (!turnstileVerification.ok) {
+          throw new Error(`Turnstile API returned ${turnstileVerification.status}`);
+        }
+
+        turnstileResult = await turnstileVerification.json();
+      } catch (turnstileError) {
+        console.error(JSON.stringify({
+          timestamp: new Date().toISOString(),
+          requestId,
+          event: 'TURNSTILE_API_ERROR',
+          error: turnstileError.message,
+        }));
+        
+        return createErrorResponse(
+          'Verification service temporarily unavailable',
+          503,
+          corsHeaders,
+          'TURNSTILE_SERVICE_ERROR',
+          requestId
+        );
+      }
+
+      if (!turnstileResult.success) {
+        console.warn(JSON.stringify({
+          timestamp: new Date().toISOString(),
+          requestId,
+          event: 'TURNSTILE_VERIFICATION_FAILED',
+          errorCodes: turnstileResult['error-codes'] || [],
+        }));
+        
+        return createErrorResponse(
+          'Security verification failed. Please try again.',
+          400,
+          corsHeaders,
+          'TURNSTILE_FAILED',
+          requestId
+        );
+      }
+
+      console.log(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        requestId,
+        event: 'TURNSTILE_VERIFIED',
       }));
 
       // Send to n8n webhook
@@ -184,7 +214,6 @@ export default {
         timestamp: new Date().toISOString(),
         requestId,
         event: 'N8N_SEND_START',
-        testMode: true,
       }));
 
       const n8nPayload = {
@@ -195,7 +224,6 @@ export default {
         requestId: requestId,
         submittedAt: new Date().toISOString(),
         clientIP: clientIP,
-        testMode: true,
       };
 
       let n8nResponse;
@@ -217,7 +245,6 @@ export default {
           event: 'N8N_REQUEST_ERROR',
           error: n8nError.message,
           email: sanitizedData.email,
-          testMode: true,
         }));
         
         return createErrorResponse(
@@ -239,7 +266,6 @@ export default {
           statusText: n8nResponse.statusText,
           error: errorText,
           email: sanitizedData.email,
-          testMode: true,
         }));
         
         return createErrorResponse(
@@ -258,14 +284,12 @@ export default {
         event: 'INQUIRY_SUCCESS',
         email: sanitizedData.email,
         hasPhone: !!sanitizedData.phone,
-        testMode: true,
       }));
 
       return new Response(JSON.stringify({
         success: true,
         message: 'Thank you! Your inquiry has been sent successfully.',
         requestId: requestId,
-        testMode: true, // Indicates test mode
       }), {
         status: 200,
         headers: {
@@ -283,7 +307,6 @@ export default {
         error: error.message,
         stack: error.stack,
         ip: clientIP,
-        testMode: true,
       }));
       
       return createErrorResponse(
@@ -298,9 +321,9 @@ export default {
 };
 
 /**
- * Validate all inputs (same as production but without turnstileToken requirement)
+ * Validate all inputs
  */
-function validateInputs({ name, email, phone, message }) {
+function validateInputs({ name, email, phone, message, turnstileToken }) {
   const errors = [];
 
   // Required fields
@@ -330,6 +353,10 @@ function validateInputs({ name, email, phone, message }) {
     errors.push('Message must be at least 10 characters');
   } else if (message.trim().length > 5000) {
     errors.push('Message must be less than 5000 characters');
+  }
+
+  if (!turnstileToken || typeof turnstileToken !== 'string' || turnstileToken.trim().length === 0) {
+    errors.push('Security verification is required');
   }
 
   // Optional phone validation
@@ -433,7 +460,6 @@ function createErrorResponse(message, status, corsHeaders, errorCode, requestId 
     error: message,
     errorCode: errorCode,
     ...(requestId ? { requestId } : {}),
-    testMode: true,
   }), {
     status,
     headers: {
