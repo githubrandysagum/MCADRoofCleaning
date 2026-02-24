@@ -308,10 +308,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (scrollBtns.length) {
       scrollBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
-          const contactsSection = document.getElementById('contacts');
-          if (contactsSection) {
+          const inquirySection = document.getElementById('inquiry');
+          if (inquirySection) {
             e.preventDefault();
-            contactsSection.scrollIntoView({ behavior: 'smooth' });
+            inquirySection.scrollIntoView({ behavior: 'smooth' });
           }
         });
       });

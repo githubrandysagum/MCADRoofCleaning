@@ -8,9 +8,23 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
+    // Get origin from request and validate against allowed origins
+    const requestOrigin = request.headers.get('Origin');
+    const allowedOrigins = [
+      'https://mcadroofcleaning.co.uk',
+      'https://www.mcadroofcleaning.co.uk',
+      'https://mcadroof.co.uk',
+      'https://www.mcadroof.co.uk',
+    ];
+    
+    // Use request origin if it's in our allowed list, otherwise use primary domain
+    const corsOrigin = allowedOrigins.includes(requestOrigin) 
+      ? requestOrigin 
+      : 'https://www.mcadroofcleaning.co.uk';
+
     // CORS headers for all responses
     const corsHeaders = {
-      'Access-Control-Allow-Origin': 'https://mcadroofcleaning.co.uk',
+      'Access-Control-Allow-Origin': corsOrigin,
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     };
@@ -25,7 +39,17 @@ export default {
     try {
       // Route to inquiry worker
       if (path.startsWith('/inquiry')) {
-        return await env.INQUIRY_WORKER.fetch(request);
+        const response = await env.INQUIRY_WORKER.fetch(request);
+        // Clone response and override CORS headers with router's headers
+        const newHeaders = new Headers(response.headers);
+        Object.entries(corsHeaders).forEach(([key, value]) => {
+          newHeaders.set(key, value);
+        });
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: newHeaders
+        });
       }
 
       // Route to booking worker (add when ready)
