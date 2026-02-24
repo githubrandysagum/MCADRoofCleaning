@@ -4,11 +4,21 @@
  * Includes: Turnstile verification, input validation, sanitization, rate limiting, and logging
  */
 
+// Allowed origins for CORS
+const ALLOWED_ORIGINS = [
+  'https://mcadroofcleaning.co.uk',
+  'https://www.mcadroofcleaning.co.uk',
+];
+
 export default {
   async fetch(request, env, ctx) {
+    // Get the request origin
+    const origin = request.headers.get('Origin') || '';
+    const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+
     // Security headers and CORS
     const corsHeaders = {
-      'Access-Control-Allow-Origin': 'https://mcadroofcleaning.co.uk',
+      'Access-Control-Allow-Origin': allowedOrigin,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       'X-Content-Type-Options': 'nosniff',
