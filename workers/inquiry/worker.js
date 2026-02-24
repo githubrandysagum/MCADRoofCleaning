@@ -5,8 +5,13 @@
 
 export default {
   async fetch(request, env, ctx) {
+    const origin = request.headers.get('Origin');
+    const allowedOrigins = [
+      'https://mcadroofcleaning.co.uk',
+      'https://www.mcadroofcleaning.co.uk',
+    ];
     const corsHeaders = {
-      'Access-Control-Allow-Origin': 'https://mcadroofcleaning.co.uk',
+      'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     };
