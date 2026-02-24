@@ -1,6 +1,6 @@
 /**
  * Inquiry Worker
- * Handles inquiry form submissions with Turnstile verification and email sending
+ * Handles inquiry form submissions with Turnstile verification and n8n integration
  */
 
 export default {
@@ -32,9 +32,9 @@ export default {
 
     try {
       const data = await request.json();
-      const { name, email, phone, message, turnstileToken } = data;
+      const { name, email, message, turnstileToken } = data;
 
-      // Validate required fields (phone is optional)
+      // Validate required fields
       if (!name || !email || !message || !turnstileToken) {
         return new Response(JSON.stringify({
           success: false,
@@ -78,41 +78,25 @@ export default {
         });
       }
 
-      // Send email using MailChannels
-      const emailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
+      // Send to n8n webhook
+      const n8nPayload = {
+        name,
+        email,
+        message,
+        submittedAt: new Date().toISOString(),
+      };
+
+      const n8nResponse = await fetch(env.N8N_WEBHOOK_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(env.N8N_API_KEY ? { 'X-API-Key': env.N8N_API_KEY } : {}),
         },
-        body: JSON.stringify({
-          personalizations: [
-            {
-              to: [{ email: env.RECIPIENT_EMAIL || 'info@mcadroofcleaning.co.uk' }],
-            },
-          ],
-          from: {
-            email: 'noreply@mcadroofcleaning.co.uk',
-            name: 'MCAD Roof Cleaning Website',
-          },
-          subject: `New Inquiry from ${name}`,
-          content: [
-            {
-              type: 'text/html',
-              value: `
-                <h2>New Inquiry Submission</h2>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-                <p><strong>Message:</strong></p>
-                <p>${message.replace(/\n/g, '<br>')}</p>
-              `,
-            },
-          ],
-        }),
+        body: JSON.stringify(n8nPayload),
       });
 
-      if (!emailResponse.ok) {
-        throw new Error('Failed to send email');
+      if (!n8nResponse.ok) {
+        throw new Error('Failed to send to n8n webhook');
       }
 
       return new Response(JSON.stringify({

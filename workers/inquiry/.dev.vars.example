@@ -2,4 +2,5 @@
 # Copy this file and rename to .dev.vars (which is gitignored)
 
 TURNSTILE_SECRET_KEY=your-turnstile-secret-key-here
-RECIPIENT_EMAIL=your-email@example.com
+N8N_WEBHOOK_URL=https://your-n8n-instance/webhook/inquiry
+N8N_API_KEY=your-api-key-here
