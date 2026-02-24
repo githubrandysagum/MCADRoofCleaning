@@ -37,13 +37,13 @@ export default {
 
     try {
       const data = await request.json();
-      const { name, email, message, turnstileToken } = data;
+      const { name, email, message } = data;
 
       // Validate required fields
-      if (!name || !email || !message || !turnstileToken) {
+      if (!name || !email || !message) {
         return new Response(JSON.stringify({
           success: false,
-          error: 'Name, email, message, and verification are required'
+          error: 'Name, email, and message are required'
         }), {
           status: 400,
           headers: {
@@ -54,34 +54,7 @@ export default {
       }
 
       // Verify Turnstile token
-      const turnstileVerification = await fetch(
-        'https://challenges.cloudflare.com/turnstile/v0/siteverify',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            secret: env.TURNSTILE_SECRET_KEY,
-            response: turnstileToken,
-          }),
-        }
-      );
-
-      const turnstileResult = await turnstileVerification.json();
-
-      if (!turnstileResult.success) {
-        return new Response(JSON.stringify({
-          success: false,
-          error: 'Verification failed. Please try again.'
-        }), {
-          status: 400,
-          headers: {
-            'Content-Type': 'application/json',
-            ...corsHeaders
-          }
-        });
-      }
+      // Turnstile verification removed
 
       // Send to n8n webhook
       const n8nPayload = {
