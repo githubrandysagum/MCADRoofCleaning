@@ -265,7 +265,15 @@ document.addEventListener('DOMContentLoaded', function() {
       error.style.fontSize = '0.98em';
       error.style.marginTop = '0.2em';
       error.textContent = message;
-      input.parentNode.appendChild(error);
+      if (input && input.parentNode) {
+        input.parentNode.appendChild(error);
+      } else {
+        // If input is null, show error at top of form
+        const form = document.querySelector('.inquiry-form');
+        if (form) {
+          form.insertBefore(error, form.firstChild);
+        }
+      }
     }
     
     function showSuccessMessage(form, message) {
