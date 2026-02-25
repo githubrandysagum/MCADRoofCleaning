@@ -159,8 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const inquiryForm = document.querySelector('.inquiry-form');
   if (inquiryForm) {
     inquiryForm.addEventListener('submit', async function(e) {
-      e.preventDefault(); // Always prevent default to handle with JavaScript
-      
+      e.preventDefault();
       // Remove previous errors and success messages
       const prevErrors = inquiryForm.querySelectorAll('.form-error');
       prevErrors.forEach(el => el.remove());
@@ -171,8 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const name = inquiryForm.querySelector('#inquiry-name');
       const email = inquiryForm.querySelector('#inquiry-email');
       const message = inquiryForm.querySelector('#inquiry-message');
-      const turnstileWidget = inquiryForm.querySelector('.cf-turnstile');
-      
+
       // Name validation
       if (!name.value.trim()) {
         showError(name, 'Name is required.');
@@ -191,12 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showError(message, 'Message is required.');
         valid = false;
       }
-      // Turnstile validation (skip in test mode)
-      if (!window.TEST_MODE && !turnstileVerified) {
-        showError(turnstileWidget, 'Please complete the security verification.');
-        valid = false;
-      }
-      
+
       if (!valid) {
         return;
       }
@@ -212,9 +205,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const apiUrl = window.TEST_MODE && window.TEST_API_URL 
           ? window.TEST_API_URL 
           : 'https://api.mcadroofcleaning.co.uk/inquiry';
-        
+
         console.log('Submitting to:', apiUrl);
-        
+
         // Send to API endpoint
         const response = await fetch(apiUrl, {
           method: 'POST',
@@ -224,8 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
           body: JSON.stringify({
             name: name.value.trim(),
             email: email.value.trim(),
-            message: message.value.trim(),
-            turnstileToken: turnstileToken
+            message: message.value.trim()
           })
         });
 
@@ -235,37 +227,30 @@ document.addEventListener('DOMContentLoaded', function() {
           // Clear any remaining errors before showing success
           const remainingErrors = inquiryForm.querySelectorAll('.form-error');
           remainingErrors.forEach(el => el.remove());
-          
+
           // Show success message
           showSuccessMessage(inquiryForm, result.message || 'Thank you! Your message has been sent successfully.');
-          
+
           // Reset form
           inquiryForm.reset();
-          
-          // Reset Turnstile
-          if (window.turnstile) {
-            window.turnstile.reset();
-          }
-          turnstileVerified = false;
-          turnstileToken = null;
-          
+
         } else {
           // Clear any remaining success messages before showing error
           const remainingSuccess = inquiryForm.querySelectorAll('.form-success');
           remainingSuccess.forEach(el => el.remove());
-          
+
           // Show error message
-          showError(turnstileWidget, result.error || 'An error occurred. Please try again.');
+          showError(message, result.error || 'An error occurred. Please try again.');
         }
 
       } catch (error) {
         console.error('Form submission error:', error);
-        
+
         // Clear any remaining success messages before showing error
         const remainingSuccess = inquiryForm.querySelectorAll('.form-success');
         remainingSuccess.forEach(el => el.remove());
-        
-        showError(turnstileWidget, 'Network error. Please check your connection and try again.');
+
+        showError(message, 'Network error. Please check your connection and try again.');
       } finally {
         // Re-enable submit button
         submitButton.disabled = false;
